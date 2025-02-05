@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://d04tvwyids61o"]
+
+[ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_rb686"]
+[ext_resource type="Texture2D" uid="uid://bw0ig6m0klsel" path="res://resources/Placeholder/paul_sprite0_placeholder.png" id="1_sppjt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol0vo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sppjt")
+}],
+"loop": true,
+"name": &"Paul_movement",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpiat"]
+size = Vector2(125, 191)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7ls4"]
+radius = 10.8167
+
+[node name="ExplorationTest" type="Node2D"]
+
+[node name="Paul_UC" type="RigidBody2D" parent="."]
+position = Vector2(400, 400)
+rotation = 3.14159
+script = ExtResource("1_rb686")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Paul_UC"]
+sprite_frames = SubResource("SpriteFrames_ol0vo")
+animation = &"Paul_movement"
+
+[node name="Collider" type="CollisionShape2D" parent="Paul_UC"]
+position = Vector2(-0.5, -7.5)
+shape = SubResource("RectangleShape2D_cpiat")
+
+[node name="Camera" type="Camera2D" parent="Paul_UC"]
+rotation = -3.14159
+position_smoothing_enabled = true
+
+[node name="RightWheel" type="StaticBody2D" parent="Paul_UC"]
+position = Vector2(-54.9999, -40)
+rotation = -3.14159
+
+[node name="Collider" type="CollisionShape2D" parent="Paul_UC/RightWheel"]
+shape = SubResource("CircleShape2D_p7ls4")
+
+[node name="Room_walls" type="StaticBody2D" parent="."]
+
+[node name="Collider" type="CollisionPolygon2D" parent="Room_walls"]
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 1100, 0, 1100, 800, 200, 800, 0, 600)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(455, 440)
+node_a = NodePath("../Paul_UC/RightWheel")
+node_b = NodePath("../Paul_UC")
