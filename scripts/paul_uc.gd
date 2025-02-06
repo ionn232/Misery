@@ -33,14 +33,15 @@ func _physics_process(delta: float) -> void:
 	if(right_forward || right_back):
 		speed_right += IMPULSE * ((int(right_forward)*2)-1)
 	
-	speed_left = move_toward(speed_left, 0.0, abs(speed_left) * FRICTION)
-	speed_right = move_toward(speed_right, 0.0, abs(speed_right) * FRICTION)
-	
 	#holding a wheel
 	if (Input.is_action_pressed("Left-wheel-up") && Input.is_action_pressed("Left-wheel-down")):
-		speed_left = -speed_right * (1.0 - 0.125) #TODO: calculate value instead of hardcoding
+		speed_left = -speed_right * (1.0 - 0.19) #TODO: calculate value instead of hardcoding
 	if (Input.is_action_pressed("Right-wheel-up") && Input.is_action_pressed("Right-wheel-down")):
-		speed_right = -speed_left * (1.0 - 0.125) #TODO same shit
+		speed_right = -speed_left * (1.0 - 0.19) #TODO same shit
+	
+	#floor friction
+	speed_left = move_toward(speed_left, 0.0, abs(speed_left) * FRICTION)
+	speed_right = move_toward(speed_right, 0.0, abs(speed_right) * FRICTION)
 	
 	#limit speed
 	speed_left = clampf(speed_left, -MAX_SPEED, MAX_SPEED)
