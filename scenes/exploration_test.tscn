@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d04tvwyids61o"]
+[gd_scene load_steps=6 format=3 uid="uid://d04tvwyids61o"]
 
-[ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_rb686"]
 [ext_resource type="Texture2D" uid="uid://bw0ig6m0klsel" path="res://resources/Placeholder/paul_sprite0_placeholder.png" id="1_sppjt"]
+[ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ol0vo"]
 animations = [{
@@ -17,12 +17,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpiat"]
 size = Vector2(125, 191)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2uhy6"]
+
 [node name="ExplorationTest" type="Node2D"]
 
 [node name="Paul_UC" type="CharacterBody2D" parent="."]
 position = Vector2(400, 400)
 rotation = 3.14159
-script = ExtResource("1_rb686")
+script = ExtResource("1_tv0qa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Paul_UC"]
 sprite_frames = SubResource("SpriteFrames_ol0vo")
@@ -41,9 +43,17 @@ position_smoothing_enabled = true
 [node name="Collider" type="CollisionPolygon2D" parent="Room_walls"]
 build_mode = 1
 polygon = PackedVector2Array(0, 0, 1100, 0, 1100, 800, 200, 800, 0, 600)
+disabled = true
 
 [node name="DEBUG_label" type="Label" parent="."]
 offset_left = 5.0
 offset_top = 51.0
 offset_right = 6.0
 offset_bottom = 74.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(463, 400)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2uhy6")

@@ -2,16 +2,19 @@ extends CharacterBody2D
 
 @onready var debug_label: Label = $"../DEBUG_label"
 
-const IMPULSE = 500.0
-const MAX_SPEED = 600.0
+@export var allow_drift:bool = false
+
+#values per wheel (effectively doubled for player control)
+const IMPULSE = 250.0
+const MAX_SPEED = 300.0
+
 const ROTATION_RADIUS = 700
 const FRICTION = 0.025
-const SPIN_DAMPENING = 0.05
+const SPIN_DAMPENING = 0.005
 const COLLISION_SPEED_LOSS = 0.075 #applied per physics frame
 
-var speed:float = 0.0
-var spin_left:float = 0.0
-var spin_right:float = 0.0
+var speed_right:float = 0.0
+var speed_left: float = 0.0
 
 #TODO: move to physics process scope if drawing is no longer necessary
 var forward:Vector2
@@ -24,50 +27,51 @@ func _physics_process(delta: float) -> void:
 	var left_forward:bool = Input.is_action_just_pressed("Left-wheel-up")
 	var left_back:bool = Input.is_action_just_pressed("Left-wheel-down")
 	
-	if (left_forward || left_back):
-		speed += 0.5 * IMPULSE * ((int(left_forward)*2)-1)
-		spin_right = float(left_forward || left_back)
-	elif (right_forward || right_back):
-		speed += 0.5 * IMPULSE * ((int(right_forward)*2)-1)
-		spin_left = float(right_forward || right_back)
-	#if (left_forward || left_back || right_forward || right_back):
-		#speed = IMPULSE/2 * (float(left_forward) + float(right_forward) - float(left_back) - float(left_forward))
-		##spin_right = float(left_forward || left_back)
-		##spin_left = float(right_forward || right_back)
-	else:
-		speed = move_toward(speed, 0.0, abs(speed) * FRICTION)
-		if (spin_left > 0.0 && spin_right > 0.0):
-			spin_left = maxf(0.0, move_toward(spin_left, 0.0, spin_left * SPIN_DAMPENING))
-			spin_right = maxf(0.0, move_toward(spin_right, 0.0, spin_right * SPIN_DAMPENING))
+	#pushed a wheel
+	if(left_forward || left_back):
+		speed_left += IMPULSE * ((int(left_forward)*2)-1)
+	if(right_forward || right_back):
+		speed_right += IMPULSE * ((int(right_forward)*2)-1)
+	
+	speed_left = move_toward(speed_left, 0.0, abs(speed_left) * FRICTION)
+	speed_right = move_toward(speed_right, 0.0, abs(speed_right) * FRICTION)
+	
+	#holding a wheel
+	if (Input.is_action_pressed("Left-wheel-up") && Input.is_action_pressed("Left-wheel-down")):
+		speed_left = -speed_right * (1.0 - 0.125) #TODO: calculate value instead of hardcoding
+	if (Input.is_action_pressed("Right-wheel-up") && Input.is_action_pressed("Right-wheel-down")):
+		speed_right = -speed_left * (1.0 - 0.125) #TODO same shit
 	
 	#limit speed
-	speed = clampf(speed, -MAX_SPEED, MAX_SPEED)
+	speed_left = clampf(speed_left, -MAX_SPEED, MAX_SPEED)
+	speed_right = clampf(speed_right, -MAX_SPEED, MAX_SPEED)
 	
 	#debug instructions
-	debug_label.text = 'speed: ' + str(speed)
+	debug_label.text = 'speed: (' + str(speed_left) + ' , ' + str(speed_right) + ')'
 	debug_label.text += '\nrotation: ' + str(rotation)
 	debug_label.text += '\nforward: ' + str(forward)
 	debug_label.text += '\nright: ' + str(right)
 	debug_label.text += '\nleft: ' + str(left)
-	debug_label.text += '\nspin right: ' + str(spin_right)
-	debug_label.text += '\nspin left: ' + str(spin_left)
 	#end debug
 	
-	rotate(((speed*delta)/ROTATION_RADIUS) * spin_right)
-	rotate(-((speed*delta)/ROTATION_RADIUS) * spin_left)
-	
+	#rotate according to wheel speeds
+	rotate(-(speed_right*delta)/ROTATION_RADIUS)
+	rotate((speed_left*delta)/ROTATION_RADIUS)
 	forward = transform.x.rotated(PI/2)
 	right = -transform.x
 	left = transform.x
 	
-	velocity.x = speed * forward.x
-	velocity.y = speed * forward.y
-	
+	#translate speeds into velocity
+	velocity.x = speed_left * forward.x
+	velocity.y = speed_left * forward.y
+	velocity.x += speed_right * forward.x 
+	velocity.y += speed_right * forward.y
 	
 	var collision:bool = move_and_slide() #applies velocity and checks for collision
 	#reduce speed when collision detected
 	if collision:
-		speed = speed * (1.0 - COLLISION_SPEED_LOSS)
+		speed_right = speed_right * (1.0 - COLLISION_SPEED_LOSS)
+		speed_left = speed_left * (1.0 - COLLISION_SPEED_LOSS)
 	
 
 #debug function
