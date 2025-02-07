@@ -37,6 +37,10 @@ shape = SubResource("RectangleShape2D_cpiat")
 [node name="cameraTransform" type="RemoteTransform2D" parent="Paul_UC"]
 rotation = 3.14159
 
+[node name="PushTimer" type="Timer" parent="Paul_UC"]
+process_callback = 0
+one_shot = true
+
 [node name="Room_walls" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionPolygon2D" parent="Room_walls"]
@@ -50,3 +54,5 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 6.0
 offset_bottom = 28.0
+
+[connection signal="timeout" from="Paul_UC/PushTimer" to="Paul_UC" method="wheelchair_push"]
