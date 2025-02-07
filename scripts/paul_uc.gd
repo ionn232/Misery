@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	var speed_left = raw_speed_left
 	
 	#both wheels have opposite forces (spinning around self)
-	if (sign(raw_speed_left) != sign(raw_speed_right) && raw_speed_left != 0.0 && raw_speed_right != 0.0 && abs(raw_speed_left + raw_speed_right) <= 50.0):
+	if (sign(raw_speed_left) != sign(raw_speed_right) && raw_speed_left != 0.0 && raw_speed_right != 0.0 && abs(raw_speed_left + raw_speed_right) <= 10.0):
 		rotation_radius_right = MAX_ROTATION_RADIUS * 0.05 if raw_speed_left > raw_speed_right else rotation_radius_right
 		rotation_radius_left = MAX_ROTATION_RADIUS * 0.05 if raw_speed_left < raw_speed_right else rotation_radius_left
 		#shitty hack to avoid making player a beyblade without modifying raw speed: 

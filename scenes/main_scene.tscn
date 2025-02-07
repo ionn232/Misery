@@ -1,13 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://7hi5e28j18si"]
+[gd_scene load_steps=2 format=3 uid="uid://7hi5e28j18si"]
 
-[ext_resource type="PackedScene" uid="uid://d04tvwyids61o" path="res://scenes/exploration_test.tscn" id="1_kxkac"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_u6tk6"]
 
 [node name="Main scene" type="Node2D"]
 script = ExtResource("1_u6tk6")
-
-[node name="ExplorationTest" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_kxkac")]
-camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true

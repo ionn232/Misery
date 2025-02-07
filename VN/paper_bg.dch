@@ -1,0 +1,30 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(0, 0, 0, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "vn_ui_style"
+},
+"default_portrait": "37",
+"description": "you shouldn't be reading this",
+"display_name": "paper",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"37": {
+"export_overrides": {
+"image": "\"res://resources/Interaction/vecteezy_free-download-ripped-transparent-paper-texture_47464337.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(0, 150),
+"scale": 1.5,
+"scene": ""
+}
+},
+"scale": 1.0
+}

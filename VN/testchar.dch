@@ -1,0 +1,29 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(0, 0, 0, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "vn_ui_style"
+},
+"default_portrait": "testchar0",
+"description": "wheelchair guy",
+"display_name": "Paul",
+"mirror": false,
+"nicknames": ["wheelchair guy"],
+"offset": Vector2(0, 0),
+"portraits": {
+"testchar0": {
+"export_overrides": {
+"image": "\"res://resources/Placeholder/paul_sprite0_placeholder.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 1.0
+}
