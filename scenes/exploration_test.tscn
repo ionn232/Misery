@@ -58,16 +58,17 @@ build_mode = 1
 polygon = PackedVector2Array(40, -202.5, 39.5, -240.75, 39.5, -211)
 
 [node name="Paul_UC" type="CharacterBody2D" parent="."]
-position = Vector2(400, 400)
+position = Vector2(526, 508)
 rotation = 3.14159
 script = ExtResource("1_tv0qa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Paul_UC"]
+position = Vector2(0, 40)
 sprite_frames = SubResource("SpriteFrames_ol0vo")
 animation = &"Paul_movement"
 
 [node name="Collider" type="CollisionShape2D" parent="Paul_UC"]
-position = Vector2(-0.5, -7.5)
+position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_cpiat")
 
 [node name="cameraTransform" type="RemoteTransform2D" parent="Paul_UC"]
@@ -84,5 +85,6 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 6.0
 offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="Paul_UC/PushTimer" to="Paul_UC" method="wheelchair_push"]

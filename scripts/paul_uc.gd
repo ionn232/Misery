@@ -18,7 +18,7 @@ const PUSH_BATCH_TIME = 0.333 #20 frames
 #dampening factors, linear progression
 const FRICTION = 5 
 const COLLISION_SPEED_LOSS = 0.075 
-const SPIN_SPEED_DAMPENING = 0.5
+const SPIN_SPEED_DAMPENING = 0.01
 const HOLD_SPEED_DAMPENING = 0.25
 
 var rotation_radius_left:float = MAX_ROTATION_RADIUS
@@ -59,8 +59,8 @@ func _physics_process(delta: float) -> void:
 	
 	#both wheels have opposite forces (spinning around self)
 	if (sign(raw_speed_left) != sign(raw_speed_right) && raw_speed_left != 0.0 && raw_speed_right != 0.0 && abs(raw_speed_left + raw_speed_right) <= 10.0):
-		rotation_radius_right = MAX_ROTATION_RADIUS * 0.05 if raw_speed_left > raw_speed_right else rotation_radius_right
-		rotation_radius_left = MAX_ROTATION_RADIUS * 0.05 if raw_speed_left < raw_speed_right else rotation_radius_left
+		rotation_radius_right = MAX_ROTATION_RADIUS * 0.001 if raw_speed_left > raw_speed_right else rotation_radius_right
+		rotation_radius_left = MAX_ROTATION_RADIUS * 0.001 if raw_speed_left < raw_speed_right else rotation_radius_left
 		#shitty hack to avoid making player a beyblade without modifying raw speed: 
 		#uses alternative (lower) speed values for this tick
 		speed_right = raw_speed_right * SPIN_SPEED_DAMPENING
@@ -77,14 +77,14 @@ func _physics_process(delta: float) -> void:
 	#holding a wheel. Deque wheel push.
 	if (Input.is_action_pressed("Left-wheel-up") && Input.is_action_pressed("Left-wheel-down")):
 		raw_speed_left = 0
-		rotation_radius_left = MAX_ROTATION_RADIUS * 0.1
+		rotation_radius_left = MAX_ROTATION_RADIUS * 0.06
 		speed_right = raw_speed_right * HOLD_SPEED_DAMPENING
 		speed_left = raw_speed_left * HOLD_SPEED_DAMPENING
 		queue_left_back = false
 		queue_left_forward = false
 	if (Input.is_action_pressed("Right-wheel-up") && Input.is_action_pressed("Right-wheel-down")):
 		raw_speed_right = 0
-		rotation_radius_right = MAX_ROTATION_RADIUS * 0.1
+		rotation_radius_right = MAX_ROTATION_RADIUS * 0.06
 		speed_right = raw_speed_right * HOLD_SPEED_DAMPENING
 		speed_left = raw_speed_left * HOLD_SPEED_DAMPENING
 		queue_right_back = false
