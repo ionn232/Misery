@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d04tvwyids61o"]
+[gd_scene load_steps=7 format=3 uid="uid://d04tvwyids61o"]
 
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Texture2D" uid="uid://bw0ig6m0klsel" path="res://resources/Placeholder/paul_sprite0_placeholder.png" id="1_sppjt"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
+[ext_resource type="Texture2D" uid="uid://d36e4ded8mncu" path="res://resources/Exploration/map_v1.png" id="2_stnxy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ol0vo"]
 animations = [{
@@ -20,6 +21,41 @@ size = Vector2(125, 191)
 
 [node name="ExplorationTest" type="Node2D"]
 script = ExtResource("1_0fxv7")
+
+[node name="map" type="Sprite2D" parent="."]
+position = Vector2(-53, 1144)
+scale = Vector2(4, 4)
+texture = ExtResource("2_stnxy")
+
+[node name="collisions" type="StaticBody2D" parent="map"]
+
+[node name="outer_walls" type="CollisionPolygon2D" parent="map/collisions"]
+build_mode = 1
+polygon = PackedVector2Array(279, -242.25, 237.75, -281, 79, -280, 40.25, -242.25, -281, -240.5, -281.75, 360, 279, 359)
+
+[node name="wall1" type="CollisionPolygon2D" parent="map/collisions"]
+build_mode = 1
+polygon = PackedVector2Array(38.5, 79, 38.5, 159, 39.25, 116.75, 276.5, 119.5, 38.5, 117.75)
+
+[node name="wall2" type="CollisionPolygon2D" parent="map/collisions"]
+build_mode = 1
+polygon = PackedVector2Array(38.5, 202.75, 39.25, 280, 19.25, 279.25, 19.25, 339.75, -21.25, 339.75, -22, 279.25, -41.25, 280.75, -40.5, 199.25, -40.5, 359, 40.25, 359)
+
+[node name="wall3" type="CollisionPolygon2D" parent="map/collisions"]
+build_mode = 1
+polygon = PackedVector2Array(40.25, -160.75, 39.25, 37.75, 41, -2.5, 278.25, 0, 40.25, -1.75)
+
+[node name="wall4" type="CollisionPolygon2D" parent="map/collisions"]
+build_mode = 1
+polygon = PackedVector2Array(-41.25, 157.25, -39.75, -158, -40.5, 148.75)
+
+[node name="wall5" type="CollisionPolygon2D" parent="map/collisions"]
+build_mode = 1
+polygon = PackedVector2Array(-40.25, -201.5, -40.25, -240.75, -40.25, -209.75)
+
+[node name="wall6" type="CollisionPolygon2D" parent="map/collisions"]
+build_mode = 1
+polygon = PackedVector2Array(40, -202.5, 39.5, -240.75, 39.5, -211)
 
 [node name="Paul_UC" type="CharacterBody2D" parent="."]
 position = Vector2(400, 400)
@@ -40,12 +76,6 @@ rotation = 3.14159
 [node name="PushTimer" type="Timer" parent="Paul_UC"]
 process_callback = 0
 one_shot = true
-
-[node name="Room_walls" type="StaticBody2D" parent="."]
-
-[node name="Collider" type="CollisionPolygon2D" parent="Room_walls"]
-build_mode = 1
-polygon = PackedVector2Array(0, 0, 1100, 0, 1100, 800, 200, 800, 0, 600)
 
 [node name="DEBUG_ui" type="CanvasLayer" parent="."]
 
