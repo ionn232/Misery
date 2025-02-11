@@ -266,6 +266,7 @@ texture = ExtResource("6_uch03")
 metadata/_edit_layout_mode = 1
 
 [node name="NameField" type="PanelContainer" parent="Anchor/AnimationParent"]
+layout_mode = 0
 offset_left = -829.0
 offset_top = -375.0
 offset_right = -679.0
