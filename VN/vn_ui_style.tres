@@ -58,6 +58,7 @@ overrides = {
 "box_color_use_global": "false",
 "box_margin_bottom": "75.0",
 "box_size": "Vector2(1600, 250)",
+"name_label_alignment": "2",
 "name_label_box_modulate": "Color(1, 1, 1, 0)",
 "name_label_box_use_global_color": "false",
 "text_custom_color": "Color(0, 0, 0, 1)",
@@ -81,4 +82,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_y10kd")]([])
-metadata/_latest_layer = "11"
+metadata/_latest_layer = "18"
