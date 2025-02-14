@@ -1,7 +1,8 @@
 [style name="vn_stock"]
-join paper_bg left [animation="Slide In Left" length="1.5" wait="true"]
-join annie left [animation="Fade In Up" wait="true"]
+join paper_bg left [animation="Slide In Left" length="1.5"]
+join annie left [animation="Fade In Up"]
 annie: This is a test dialogue. Oh the misery.
+annie: AAAAAAAAAAAAAAAAAAAAAA
 [clear time="1.0" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out Down" wait="true"]
 leave paper_bg [animation="Slide Out Right" wait="true"]

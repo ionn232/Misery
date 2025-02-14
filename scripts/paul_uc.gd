@@ -16,7 +16,7 @@ const MAX_ROTATION_RADIUS = 1000.0
 const PUSH_BATCH_TIME = 0.333 #20 frames
 
 #dampening factors, linear progression
-const FRICTION = 5 
+const FRICTION = 500
 const COLLISION_SPEED_LOSS = 0.075 
 const SPIN_SPEED_DAMPENING = 0.01
 const HOLD_SPEED_DAMPENING = 0.25
@@ -91,8 +91,8 @@ func _physics_process(delta: float) -> void:
 		queue_right_forward = false
 	
 	#floor friction
-	raw_speed_left = move_toward(raw_speed_left, 0.0, FRICTION)
-	raw_speed_right = move_toward(raw_speed_right, 0.0, FRICTION)
+	raw_speed_left = move_toward(raw_speed_left, 0.0, FRICTION * delta)
+	raw_speed_right = move_toward(raw_speed_right, 0.0, FRICTION * delta)
 	
 	#limit speed
 	raw_speed_left = clampf(raw_speed_left, -MAX_SPEED, MAX_SPEED)
