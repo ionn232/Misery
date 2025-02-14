@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var debug_label: Label = $"../DEBUG_ui/DEBUG_label"
 @onready var push_timer: Timer = $PushTimer
+@onready var sprite_handler_right: AnimatedSprite2D = $SpriteHandlerRight
+@onready var sprite_handler_left: AnimatedSprite2D = $SpriteHandlerLeft
 
 signal process_push
 
@@ -34,6 +36,8 @@ var queue_right_back:bool = false
 var queue_left_forward:bool = false
 var queue_left_back:bool = false
 
+var last_push:float = 0.0
+
 #TODO: move to physics process scope if drawing is no longer necessary
 var forward:Vector2
 var left:Vector2
@@ -41,6 +45,8 @@ var right:Vector2
 
 func _ready() -> void:
 	push_timer.wait_time = PUSH_BATCH_TIME
+	sprite_handler_right.play("neutral")
+	sprite_handler_left.play("neutral")
 
 func _physics_process(delta: float) -> void:
 	#input handling
@@ -82,6 +88,7 @@ func _physics_process(delta: float) -> void:
 		speed_left = raw_speed_left * HOLD_SPEED_DAMPENING
 		queue_left_back = false
 		queue_left_forward = false
+		sprite_handler_left.play("brake")
 	if (Input.is_action_pressed("Right-wheel-up") && Input.is_action_pressed("Right-wheel-down")):
 		raw_speed_right = 0
 		rotation_radius_right = MAX_ROTATION_RADIUS * 0.06
@@ -89,6 +96,7 @@ func _physics_process(delta: float) -> void:
 		speed_left = raw_speed_left * HOLD_SPEED_DAMPENING
 		queue_right_back = false
 		queue_right_forward = false
+		sprite_handler_right.play("brake")
 	
 	#floor friction
 	raw_speed_left = move_toward(raw_speed_left, 0.0, FRICTION * delta)
@@ -112,6 +120,7 @@ func _physics_process(delta: float) -> void:
 	debug_label.text += '\nright: ' + str(right)
 	debug_label.text += '\nleft: ' + str(left)
 	debug_label.text += '\ntimer: ' + str(push_timer.time_left)
+	debug_label.text += '\nlast push: ' + str(last_push)
 	#end debug
 	
 	#rotate according to wheel speeds (wheel distance / radius)
@@ -128,10 +137,15 @@ func _physics_process(delta: float) -> void:
 	velocity.y += speed_right * forward.y
 	
 	var collision:bool = move_and_slide() #applies velocity and checks for collision
+	
 	#reduce speed when collision detected
 	if collision:
 		raw_speed_right = raw_speed_right * (1.0 - COLLISION_SPEED_LOSS)
 		raw_speed_left = raw_speed_left * (1.0 - COLLISION_SPEED_LOSS)
+	
+	#augment timer and reset animation if necessary
+	last_push += delta
+	
 	self.draw
 
 #apply and dequeue inputs when timer ends
@@ -140,13 +154,16 @@ func wheelchair_push() -> void:
 	if(queue_left_forward || queue_left_back):
 		raw_speed_left += IMPULSE * ((int(queue_left_forward)*2)-1)
 		rotation_radius_right = MAX_ROTATION_RADIUS
+		sprite_handler_left.play("push") if queue_left_forward else sprite_handler_left.play("push_back")
 		queue_left_back = false
 		queue_left_forward = false
 	if(queue_right_forward || queue_right_back):
 		raw_speed_right += IMPULSE * ((int(queue_right_forward)*2)-1)
 		rotation_radius_left = MAX_ROTATION_RADIUS
+		sprite_handler_right.play("push") if queue_right_forward else sprite_handler_right.play("push_back")
 		queue_right_back = false
 		queue_right_forward = false
+	last_push = 0.0
 
 
 #debug function

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bw0ig6m0klsel" path="res://resources/Placeholder/paul_sprite0_placeholder.png" id="1_sppjt"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
 [ext_resource type="Texture2D" uid="uid://d36e4ded8mncu" path="res://resources/Exploration/map_v1.png" id="2_stnxy"]
+[ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://scenes/paul_anim_frames.tres" id="5_msodk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ol0vo"]
 animations = [{
@@ -19,29 +20,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpiat"]
 size = Vector2(125, 191)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k8n2p"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"brake",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"neutral",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"push",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"push_back",
-"speed": 5.0
-}]
-
 [node name="ExplorationTest" type="Node2D"]
 script = ExtResource("1_0fxv7")
 
@@ -53,6 +31,7 @@ texture = ExtResource("2_stnxy")
 [node name="collisions" type="StaticBody2D" parent="map"]
 
 [node name="outer_walls" type="CollisionPolygon2D" parent="map/collisions"]
+position = Vector2(4.25, 3.75)
 build_mode = 1
 polygon = PackedVector2Array(279, -242.25, 237.75, -281, 79, -280, 40.25, -242.25, -281, -240.5, -281.75, 360, 279, 359)
 
@@ -86,6 +65,7 @@ rotation = 3.14159
 script = ExtResource("1_tv0qa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Paul_UC"]
+visible = false
 position = Vector2(0, 40)
 sprite_frames = SubResource("SpriteFrames_ol0vo")
 animation = &"Paul_movement"
@@ -102,12 +82,17 @@ process_callback = 0
 one_shot = true
 
 [node name="SpriteHandlerRight" type="AnimatedSprite2D" parent="Paul_UC"]
-position = Vector2(0, 40)
-sprite_frames = SubResource("SpriteFrames_k8n2p")
-animation = &"brake"
+position = Vector2(-30, 40)
+scale = Vector2(0.07, 0.07)
+sprite_frames = ExtResource("5_msodk")
+animation = &"push"
 
 [node name="SpriteHandlerLeft" type="AnimatedSprite2D" parent="Paul_UC"]
-position = Vector2(6.10352e-05, 80)
+position = Vector2(30, 40)
+scale = Vector2(0.07, 0.07)
+sprite_frames = ExtResource("5_msodk")
+animation = &"push"
+flip_h = true
 
 [node name="DEBUG_ui" type="CanvasLayer" parent="."]
 

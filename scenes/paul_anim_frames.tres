@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://b83qg8hvnqv0p"]
+
+[ext_resource type="Texture2D" uid="uid://1auy0ho3lsnw" path="res://resources/Exploration/paul_neutral.png" id="1_kt8oh"]
+[ext_resource type="Texture2D" uid="uid://cbyyenh8tfksi" path="res://resources/Exploration/paul_push.png" id="2_ikpjw"]
+[ext_resource type="Texture2D" uid="uid://3l04k3y10nd4" path="res://resources/Exploration/paul_pull.png" id="3_yp4p4"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kt8oh")
+}],
+"loop": true,
+"name": &"brake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kt8oh")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ikpjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_kt8oh")
+}],
+"loop": false,
+"name": &"push",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yp4p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_kt8oh")
+}],
+"loop": false,
+"name": &"push_back",
+"speed": 5.0
+}]
