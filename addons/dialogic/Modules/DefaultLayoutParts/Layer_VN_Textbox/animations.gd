@@ -2,6 +2,9 @@ extends AnimationPlayer
 
 ## A custom script/node that adds some animations to the textbox.
 
+@onready var text_box: AnimatedSprite2D = $"../Anchor/AnimationParent/TextBox"
+@onready var name_box: AnimatedSprite2D = $"../Anchor/AnimationParent/NameBox"
+
 # Careful: Sync these with the ones in the root script!
 enum AnimationsIn {NONE, POP_IN, FADE_UP}
 enum AnimationsOut {NONE, POP_OUT, FADE_DOWN}
@@ -33,6 +36,11 @@ func _ready() -> void:
 
 
 func _on_textbox_show() -> void:
+	
+	if (text_box && name_box):
+		text_box.play("unfold")
+		name_box.play("unfold")
+	
 	if animation_in == AnimationsIn.NONE:
 		return
 	play('RESET')
@@ -50,6 +58,11 @@ func _on_textbox_show() -> void:
 
 
 func _on_textbox_hide() -> void:
+	
+	if (text_box && name_box):
+		text_box.play("fold")
+		name_box.play("fold")
+	
 	if animation_out == AnimationsOut.NONE:
 		return
 	play('RESET')

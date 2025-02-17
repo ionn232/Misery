@@ -1,15 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://o0qsfhxrtt5c"]
+[gd_scene load_steps=25 format=3 uid="uid://o0qsfhxrtt5c"]
 
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.gd" id="1_bpydr"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/animations.gd" id="2_xy7a2"]
+[ext_resource type="Texture2D" uid="uid://dr8cgw7t63d0t" path="res://resources/Interaction/f0.png" id="3_4f08k"]
+[ext_resource type="Texture2D" uid="uid://hjq6l5ljmgd3" path="res://resources/Interaction/vecteezy_free-download-ripped-transparent-paper-texture_47464377.png" id="3_4xym7"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_4634k"]
-[ext_resource type="SpriteFrames" uid="uid://cwxk3p32k8o25" path="res://VN/textbox_frames.tres" id="3_q1sid"]
 [ext_resource type="StyleBox" uid="uid://bthp6oh0b247m" path="res://VN/test_dialoguebox.tres" id="3_qqkg6"]
 [ext_resource type="StyleBox" uid="uid://dkv1pl1c1dq6" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_default_panel.tres" id="3_ssa84"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_ma5mw"]
-[ext_resource type="Script" path="res://scripts/text_box.gd" id="4_uunac"]
+[ext_resource type="Script" path="res://VN/text_box.gd" id="4_uunac"]
+[ext_resource type="Texture2D" uid="uid://cfdpcxukuh3f5" path="res://resources/Interaction/f1.png" id="4_ybypa"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_next_indicator.gd" id="5_40a50"]
+[ext_resource type="Texture2D" uid="uid://f67cghogbqha" path="res://resources/Interaction/f2.png" id="5_pl3m6"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/autoadvance_indicator.gd" id="6_07xym"]
+[ext_resource type="Texture2D" uid="uid://c8o5ljxarf6t8" path="res://resources/Interaction/f3.png" id="6_uavwp"]
 [ext_resource type="Texture2D" uid="uid://b0rpqfg4fhebk" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/next.svg" id="6_uch03"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="7_bi7sh"]
 [ext_resource type="StyleBox" uid="uid://m7gyepkysu83" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_name_label_panel.tres" id="9_yg8ig"]
@@ -203,6 +207,29 @@ _data = {
 "textbox_pop": SubResource("Animation_htbgc")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnyr8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4f08k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ybypa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pl3m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uavwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4xym7")
+}],
+"loop": false,
+"name": &"unfold",
+"speed": 15.0
+}]
+
 [sub_resource type="FontVariation" id="FontVariation_v8y64"]
 
 [node name="VN_TextboxLayer" type="Control"]
@@ -251,16 +278,15 @@ mouse_filter = 2
 [node name="TextBox" type="AnimatedSprite2D" parent="Anchor/AnimationParent"]
 position = Vector2(8.00001, -188)
 scale = Vector2(0.243792, 0.196)
-sprite_frames = ExtResource("3_q1sid")
-animation = &"default_sprite"
+sprite_frames = SubResource("SpriteFrames_tnyr8")
+animation = &"unfold"
+frame = 4
 script = ExtResource("4_uunac")
 
-[node name="NameBox" type="AnimatedSprite2D" parent="Anchor/AnimationParent"]
+[node name="NameBox" type="Sprite2D" parent="Anchor/AnimationParent"]
 position = Vector2(763.5, -346.5)
 scale = Vector2(0.0192865, 0.0255)
-sprite_frames = ExtResource("3_q1sid")
-animation = &"default_sprite"
-script = ExtResource("4_uunac")
+texture = ExtResource("3_4xym7")
 
 [node name="NextIndicator" type="Control" parent="Anchor/AnimationParent"]
 unique_name_in_owner = true

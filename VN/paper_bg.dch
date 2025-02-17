@@ -6,34 +6,33 @@
 "custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": "vn_ui_style"
+"style": ""
 },
-"default_portrait": "test",
+"default_portrait": "scene",
 "description": "you shouldn't be reading this",
-"display_name": "paper",
+"display_name": "paper_bg",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"test": {
+"empty": {
 "export_overrides": {
-"image": "\"res://resources/Interaction/vecteezy_free-download-ripped-transparent-paper-texture_47464337.png\""
+"image": "\"res://VN/empty.png\""
 },
-"ignore_char_scale": true,
 "mirror": false,
-"offset": Vector2(0, -50),
+"offset": Vector2(0, 0),
 "scale": 1.0,
 "scene": ""
 },
-"test2": {
+"scene": {
 "export_overrides": {
-"image": "\"res://resources/Interaction/horizontal2.png\""
+"image": ""
 },
 "ignore_char_scale": true,
 "mirror": false,
-"offset": Vector2(-50, 400),
-"scale": 3.5,
-"scene": ""
+"offset": Vector2(0, -600),
+"scale": 1.0,
+"scene": "res://VN/paper_bg_character.tscn"
 }
 },
 "scale": 1.0

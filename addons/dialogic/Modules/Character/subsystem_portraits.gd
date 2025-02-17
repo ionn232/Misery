@@ -94,6 +94,7 @@ func _create_character_node(character:DialogicCharacter, container:DialogicNode_
 func _change_portrait(character_node: Node2D, portrait: String, fade_animation:="", fade_length := 0.5) -> Dictionary:
 	var character: DialogicCharacter = character_node.get_meta('character')
 
+	
 	if portrait.is_empty():
 		portrait = character.default_portrait
 
@@ -305,7 +306,6 @@ func _remove_portrait(portrait_node: Node) -> void:
 	portrait_node.get_parent().remove_child(portrait_node)
 	portrait_node.queue_free()
 
-
 ## Gets the default animation length for joining characters
 ## If Auto-Skip is enabled, limits the time.
 func _get_join_default_length() -> float:
@@ -364,6 +364,8 @@ func get_valid_portrait(character:DialogicCharacter, portrait:String) -> String:
 ## Adds a character at a position and sets it's portrait.
 ## If the character is already joined it will only update, portrait, position, etc.
 func join_character(character:DialogicCharacter, portrait:String,  position_id:String, mirrored:= false, z_index:= 0, extra_data:= "", animation_name:= "", animation_length:= 0.0, animation_wait := false) -> Node:
+	
+	
 	if is_character_joined(character):
 		change_character_portrait(character, portrait)
 
@@ -384,6 +386,11 @@ func join_character(character:DialogicCharacter, portrait:String,  position_id:S
 		return null
 
 	dialogic.current_state_info['portraits'][character.resource_path] = {'portrait':portrait, 'node':character_node, 'position_id':position_id, 'custom_mirror':mirrored}
+
+	if (character.display_name == 'paper_bg'):
+		var test = get_character_portrait(character).get_children()
+		if (!test[0].is_playing()):
+			test[0].play("unfold")
 
 	_change_portrait_mirror(character_node, mirrored)
 	_change_portrait_extradata(character_node, extra_data)
@@ -407,10 +414,16 @@ func join_character(character:DialogicCharacter, portrait:String,  position_id:S
 			await anim.finished
 			dialogic.current_state = DialogicGameHandler.States.IDLE
 
+	#if (character.display_name == 'paper_bg'):
+		#var test = get_character_portrait(character).get_children()
+		#test[0].play("unfold")
+		#print('unfolding')
+
 	return character_node
 
 
 func add_character(character:DialogicCharacter, container: DialogicNode_PortraitContainer, portrait:String,  position_id:String) -> Node:
+		
 	if is_character_joined(character):
 		printerr('[DialogicError] Cannot add a already joined character. If this is intended call _create_character_node manually.')
 		return null
@@ -429,12 +442,14 @@ func add_character(character:DialogicCharacter, container: DialogicNode_Portrait
 	if character_node == null:
 		printerr('[Dialogic] Failed to join character to position ', position_id, ". Could not find position container.")
 		return null
-
-
+	
+	
 	dialogic.current_state_info['portraits'][character.resource_path] = {'portrait':portrait, 'node':character_node, 'position_id':position_id}
 
 	_move_character(character_node, position_id)
 	_change_portrait(character_node, portrait)
+
+
 
 	return character_node
 
@@ -518,6 +533,13 @@ func move_character(character:DialogicCharacter, position_id:String, time:= 0.0,
 
 ## Removes a character with a given animation or the default animation.
 func leave_character(character: DialogicCharacter, animation_name:= "", animation_length:= 0.0, animation_wait := false) -> void:
+	print('leave: ' + character.display_name)
+	
+	if (character.display_name == 'paper_bg'):
+		var test = get_character_portrait(character).get_children()
+		test[0].play("fold")
+		print('folding')
+	
 	if not is_character_joined(character):
 		return
 

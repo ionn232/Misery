@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
 [ext_resource type="Texture2D" uid="uid://d36e4ded8mncu" path="res://resources/Exploration/map_v1.png" id="2_stnxy"]
-[ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://scenes/paul_anim_frames.tres" id="5_msodk"]
+[ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://resources/Exploration/paul_anim_frames.tres" id="5_msodk"]
 [ext_resource type="Texture2D" uid="uid://hjq6l5ljmgd3" path="res://resources/Interaction/vecteezy_free-download-ripped-transparent-paper-texture_47464377.png" id="6_8xhyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpiat"]
