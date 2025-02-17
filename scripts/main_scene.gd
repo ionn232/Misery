@@ -9,6 +9,7 @@ extends Node2D
 
 const EXPLORATION_TEST = preload("res://scenes/exploration_test.tscn")
 const INTERACTION_TEST = preload("res://scenes/interaction_test.tscn")
+const WRITING_TEST = preload("res://scenes/writing_test.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +34,9 @@ func handle_option(index: int):
 		var test_exploration = EXPLORATION_TEST.instantiate()
 		add_child(test_exploration)
 		test_exploration.assign_camera(camera.get_path())
+	if (index == 2 || Input.is_action_just_pressed("DEBUG_2")):
+		var test_writing = WRITING_TEST.instantiate()
+		add_child(test_writing)
 	if (index == 3 || Input.is_action_just_pressed("DEBUG_3")):
 		var test_interaction = INTERACTION_TEST.instantiate()
 		add_child(test_interaction)

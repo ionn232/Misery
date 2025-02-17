@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
-@onready var debug_label: Label = $"../DEBUG_ui/DEBUG_label"
+@onready var debug_label: Label = $"../ui/DEBUG_label"
 @onready var push_timer: Timer = $PushTimer
 @onready var sprite_handler_right: AnimatedSprite2D = $SpriteHandlerRight
 @onready var sprite_handler_left: AnimatedSprite2D = $SpriteHandlerLeft
-
-signal process_push
 
 #values per wheel (effectively doubled for player control)
 const IMPULSE = 300.0
@@ -164,13 +162,3 @@ func wheelchair_push() -> void:
 		queue_right_back = false
 		queue_right_forward = false
 	last_push = 0.0
-
-
-#debug function
-func _draw():
-	draw_circle(Vector2(MAX_ROTATION_RADIUS,0), rotation_radius_left, Color.BLACK, false, 1)
-	draw_circle(Vector2(-MAX_ROTATION_RADIUS,0), rotation_radius_right, Color.BLACK, false, 1)
-	
-	draw_line(Vector2(0.0,0.0), + (global_transform.basis_xform_inv(forward) * 250), Color.RED, 1)
-	draw_line(Vector2(0,0), Vector2(0,0) + (global_transform.basis_xform_inv(left) * rotation_radius_left), Color.GREEN, 1)
-	draw_line(Vector2(0,0), Vector2(0,0) + (global_transform.basis_xform_inv(right) * rotation_radius_right), Color.BLUE, 1)
