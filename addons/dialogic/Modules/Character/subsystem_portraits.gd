@@ -414,11 +414,6 @@ func join_character(character:DialogicCharacter, portrait:String,  position_id:S
 			await anim.finished
 			dialogic.current_state = DialogicGameHandler.States.IDLE
 
-	#if (character.display_name == 'paper_bg'):
-		#var test = get_character_portrait(character).get_children()
-		#test[0].play("unfold")
-		#print('unfolding')
-
 	return character_node
 
 
@@ -532,13 +527,10 @@ func move_character(character:DialogicCharacter, position_id:String, time:= 0.0,
 
 
 ## Removes a character with a given animation or the default animation.
-func leave_character(character: DialogicCharacter, animation_name:= "", animation_length:= 0.0, animation_wait := false) -> void:
-	print('leave: ' + character.display_name)
-	
+func leave_character(character: DialogicCharacter, animation_name:= "", animation_length:= 0.0, animation_wait := false) -> void:	
 	if (character.display_name == 'paper_bg'):
 		var test = get_character_portrait(character).get_children()
 		test[0].play("fold")
-		print('folding')
 	
 	if not is_character_joined(character):
 		return
