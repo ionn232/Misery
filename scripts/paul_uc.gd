@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var push_timer: Timer = $PushTimer
 @onready var sprite_handler_right: AnimatedSprite2D = $SpriteHandlerRight
 @onready var sprite_handler_left: AnimatedSprite2D = $SpriteHandlerLeft
+@onready var object_detector: Area2D = $ObjectDetector
+@onready var time_limit: Timer = $"../TimeLimit"
 
 #values per wheel (effectively doubled for player control)
 const IMPULSE = 300.0
@@ -36,6 +38,8 @@ var queue_left_back:bool = false
 
 var last_push:float = 0.0
 
+var is_paused:bool = false
+
 #TODO: move to physics process scope if drawing is no longer necessary
 var forward:Vector2
 var left:Vector2
@@ -45,8 +49,12 @@ func _ready() -> void:
 	push_timer.wait_time = PUSH_BATCH_TIME
 	sprite_handler_right.play("neutral")
 	sprite_handler_left.play("neutral")
+	Dialogic.timeline_ended.connect(resume_game)
 
 func _physics_process(delta: float) -> void:
+	if is_paused:
+		return
+	
 	#input handling
 	var input_right_forward = Input.is_action_just_pressed("Right-wheel-up")
 	var input_right_back = Input.is_action_just_pressed("Right-wheel-down")
@@ -121,7 +129,6 @@ func _physics_process(delta: float) -> void:
 	debug_label.text += '\nlast push: ' + str(last_push)
 	#end debug
 	
-	#rotate according to wheel speeds (wheel distance / radius)
 	rotate(-(speed_right*delta)/rotation_radius_left)
 	rotate((speed_left*delta)/rotation_radius_right)
 	forward = transform.x.rotated(PI/2)
@@ -134,17 +141,28 @@ func _physics_process(delta: float) -> void:
 	velocity.x += speed_right * forward.x 
 	velocity.y += speed_right * forward.y
 	
-	var collision:bool = move_and_slide() #applies velocity and checks for collision
+	#applies velocity and checks for collision
+	var collision:bool = move_and_slide() 
 	
-	#reduce speed when collision detected
+	#reduce speed and undo rotation when collision detected
 	if collision:
 		raw_speed_right = raw_speed_right * (1.0 - COLLISION_SPEED_LOSS)
 		raw_speed_left = raw_speed_left * (1.0 - COLLISION_SPEED_LOSS)
+		rotate((speed_right*delta)/rotation_radius_left)
+		rotate(-(speed_left*delta)/rotation_radius_right)
 	
-	#augment timer and reset animation if necessary
+	#augment timer (used for input batching)
 	last_push += delta
 	
-	self.draw
+	#interact with objects
+	if(Input.is_action_just_pressed("Interact")):
+		var objectAreas:Array[Area2D] = object_detector.get_overlapping_areas()
+		if (objectAreas.size() > 0 && objectAreas[0].name == 'ObjectArea'):
+			var object:interactable = objectAreas[0].get_parent()
+			object.interact()
+			is_paused = true
+			push_timer.paused = true
+			time_limit.paused = true
 
 #apply and dequeue inputs when timer ends
 func wheelchair_push() -> void:
@@ -162,3 +180,9 @@ func wheelchair_push() -> void:
 		queue_right_back = false
 		queue_right_forward = false
 	last_push = 0.0
+
+func resume_game():
+	print('resumed!')
+	is_paused = false
+	push_timer.paused = false
+	time_limit.paused = false

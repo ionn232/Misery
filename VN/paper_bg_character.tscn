@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3y8htwg54xk3"]
 
-[ext_resource type="Script" path="res://VN/paper_bg_character.gd" id="1_jtye0"]
+[ext_resource type="Script" path="res://scripts/paper_bg_character.gd" id="1_jtye0"]
 [ext_resource type="SpriteFrames" uid="uid://dqbgpgadhxpym" path="res://VN/paper_bg_character.tres" id="2_6u7gt"]
 
 [node name="PaperBgCharacter" type="Node2D"]

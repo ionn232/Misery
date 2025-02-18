@@ -8,16 +8,16 @@
 "sound_moods": {},
 "style": "vn_ui_style"
 },
-"default_portrait": "testchar0",
+"default_portrait": "empty",
 "description": "wheelchair guy",
 "display_name": "Paul",
 "mirror": false,
 "nicknames": ["wheelchair guy"],
 "offset": Vector2(0, 0),
 "portraits": {
-"testchar0": {
+"empty": {
 "export_overrides": {
-"image": "\"res://resources/Placeholder/paul_sprite0_placeholder.png\""
+"image": "\"res://VN/empty.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

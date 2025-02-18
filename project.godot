@@ -24,10 +24,11 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 directories/dch_directory={
 "annie": "res://VN/annie.dch",
 "paper_bg": "res://VN/paper_bg.dch",
-"testchar": "res://VN/testchar.dch"
+"paul": "res://VN/paul.dch"
 }
 directories/dtl_directory={
-"test0": "res://VN/test0.dtl"
+"test0": "res://VN/test0.dtl",
+"test_object": "res://scenes/object dialogue/test/test_object.dtl"
 }
 layout/style_list=["res://VN/vn_ui_style.tres", "res://VN/vn_stock.tres"]
 layout/default_style="res://VN/vn_ui_style.tres"
@@ -136,6 +137,11 @@ DEBUG_5={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":53,"key_label":0,"unicode":53,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194336,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+Interact={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
 

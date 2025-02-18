@@ -1,16 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://d04tvwyids61o"]
+[gd_scene load_steps=16 format=3 uid="uid://d04tvwyids61o"]
 
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
 [ext_resource type="Texture2D" uid="uid://d36e4ded8mncu" path="res://resources/Exploration/map_v1.png" id="2_stnxy"]
+[ext_resource type="SpriteFrames" uid="uid://cwxk3p32k8o25" path="res://VN/textbox_frames.tres" id="5_6xoc6"]
 [ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://resources/Exploration/paul_anim_frames.tres" id="5_msodk"]
-[ext_resource type="Texture2D" uid="uid://hjq6l5ljmgd3" path="res://resources/Interaction/vecteezy_free-download-ripped-transparent-paper-texture_47464377.png" id="6_8xhyb"]
+[ext_resource type="Script" path="res://scripts/text_box.gd" id="6_knjoa"]
+[ext_resource type="Script" path="res://scenes/test_object.gd" id="7_nrqwd"]
+[ext_resource type="Texture2D" uid="uid://dr8cgw7t63d0t" path="res://resources/Interaction/f0.png" id="7_pj0su"]
+[ext_resource type="Texture2D" uid="uid://c3wdurv7fbemf" path="res://resources/Interaction/n1.png" id="8_cmg02"]
+[ext_resource type="Texture2D" uid="uid://cfdpcxukuh3f5" path="res://resources/Interaction/f1.png" id="8_lgtb0"]
+[ext_resource type="Texture2D" uid="uid://f67cghogbqha" path="res://resources/Interaction/f2.png" id="10_oanpw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbmoh"]
+size = Vector2(87.0001, 55.9998)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpiat"]
-size = Vector2(125, 191)
+size = Vector2(125, 185.75)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xe05j"]
-texture = ExtResource("6_8xhyb")
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgo0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pj0su")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cmg02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oanpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lgtb0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0jlt"]
+radius = 65.0
 
 [node name="ExplorationTest" type="Node2D"]
 script = ExtResource("1_0fxv7")
@@ -23,7 +52,7 @@ texture = ExtResource("2_stnxy")
 [node name="collisions" type="StaticBody2D" parent="map"]
 
 [node name="outer_walls" type="CollisionPolygon2D" parent="map/collisions"]
-position = Vector2(4.25, 3.75)
+position = Vector2(1, 1.25)
 build_mode = 1
 polygon = PackedVector2Array(279, -242.25, 237.75, -281, 79, -280, 40.25, -242.25, -281, -240.5, -281.75, 360, 279, 359)
 
@@ -54,10 +83,18 @@ polygon = PackedVector2Array(40, -202.5, 39.5, -240.75, 39.5, -211)
 [node name="Paul_UC" type="CharacterBody2D" parent="."]
 position = Vector2(526, 508)
 rotation = 3.14159
+motion_mode = 1
+floor_block_on_wall = false
 script = ExtResource("1_tv0qa")
 
+[node name="ObjectDetector" type="Area2D" parent="Paul_UC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paul_UC/ObjectDetector"]
+position = Vector2(0, 154)
+shape = SubResource("RectangleShape2D_gbmoh")
+
 [node name="Collider" type="CollisionShape2D" parent="Paul_UC"]
-position = Vector2(0, 40)
+position = Vector2(6.10352e-05, 38.125)
 shape = SubResource("RectangleShape2D_cpiat")
 
 [node name="cameraTransform" type="RemoteTransform2D" parent="Paul_UC"]
@@ -94,19 +131,39 @@ offset_right = 6.0
 offset_bottom = 28.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
+[node name="Box" type="AnimatedSprite2D" parent="ui"]
+position = Vector2(1820, 24)
+scale = Vector2(0.02425, 0.02425)
+sprite_frames = ExtResource("5_6xoc6")
+animation = &"default_sprite"
+script = ExtResource("6_knjoa")
+
 [node name="ui_timer" type="PanelContainer" parent="ui"]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -200.0
 offset_bottom = 50.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_xe05j")
 
 [node name="TimeLeft" type="Label" parent="ui/ui_timer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Object" type="Node2D" parent="."]
+position = Vector2(516, 95)
+script = ExtResource("7_nrqwd")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Object"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_bgo0d")
+
+[node name="ObjectArea" type="Area2D" parent="Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/ObjectArea"]
+shape = SubResource("CircleShape2D_d0jlt")
 
 [connection signal="timeout" from="Paul_UC/PushTimer" to="Paul_UC" method="wheelchair_push"]
