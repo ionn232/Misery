@@ -4,7 +4,15 @@ join paper_bg (scene) left [animation="Fade In Up" length="1.0" wait="true"]
 join annie left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
 annie: This is a test dialogue. Oh the misery.
-annie: AAAAAAAAAAAAAAAAAAAAAA
+annie: Write my novel
+[signal arg="choice"]
+- No!
+	annie: ...There's nothing to worry about. You're going to be just fine. I will take good care of you.
+	set {ANNIE_MOOD} -= 0.3
+- Sure
+	annie: Thanks! I'm your biggest fan.
+	set {ANNIE_MOOD} += 0.3
+paul: Annie's mood value is now {ANNIE_MOOD}
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
 leave paper_bg [animation="Fade Out Down" length="1.0" wait="true"]

@@ -182,7 +182,6 @@ func wheelchair_push() -> void:
 	last_push = 0.0
 
 func resume_game():
-	print('resumed!')
 	is_paused = false
 	push_timer.paused = false
 	time_limit.paused = false

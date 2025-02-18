@@ -8,8 +8,8 @@ extends Node2D
 @onready var time_limit: Timer = $TimeLimit
 
 
-#func _ready():
-	#cameraTransform.remote_path = camera.get_path()
+func _ready():
+	pass
 
 func assign_camera(cameraPath:NodePath):
 	cameraTransform.remote_path = cameraPath
