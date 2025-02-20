@@ -23,6 +23,12 @@ paul: test3
 annie: Of course you would say that! I'm your biggest fan, after all...
 annie: A third choice for testing purposes. More choices will be added over time.
 annie: Misery isn't dead, is she?!
+[signal arg_type="dict" arg="{"index":"2","scene":0,"type":"new_choices"}"]
+- No
+- Nu-uh
+- Never
+- Of course not
+- She is, actually
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
 leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
