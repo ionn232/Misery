@@ -11,9 +11,7 @@ script = ExtResource("1_y8kbt")
 wait_time = 0.05
 one_shot = true
 
-[node name="AnnieInputCooldown" type="Timer" parent="VN"]
-wait_time = 0.5
+[node name="ChoiceUnlocker" type="Timer" parent="VN"]
 one_shot = true
 
 [connection signal="timeout" from="VN/ScriptExecuter" to="VN" method="_execute_after_delay"]
-[connection signal="timeout" from="VN/AnnieInputCooldown" to="VN" method="_annie_action"]

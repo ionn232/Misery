@@ -1,24 +1,29 @@
 [style name="vn_stock"]
 [background arg="res://resources/Interaction/backgrounds/bg_kitchen.png" fade="1.0"]
-join paper_bg (scene) left [animation="Fade In Up" length="1.0" wait="true"]
+join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
 annie: This is a test dialogue. Oh the misery.
 annie: Write my novel (disabled message test)
-- No! | [if {TRUE} == false] [else="disable" alt_text="No!" index="0"]
-	test message
-- Yes, my love | [index="1"]
+[signal arg_type="dict" arg="{"index":"0","scene":0,"type":"normal"}"]
+- No! | [if {TRUE} == false] [else="disable" alt_text="No!"]
+	paul: No!
+- Yes, my love
 	paul: Yes, my love
 	annie: ...There's nothing to worry about. You're going to be just fine. I will take good care of you.
-- Sure | [index="2"]
+- Sure
 	paul: Sure
 	annie: Thanks! I'm your biggest fan.
 annie: A second choice for testing purposes. This time Annie will select choice '3'. Try and prevent it.
-[signal arg_type="dict" arg="{"index":"0","scene":0,"type":"annie_chooses"}"]
-- test1 | [index="1"]
-- test2 | [index="2"]
-- test3 | [index="3"]
+[signal arg_type="dict" arg="{"index":"1","scene":0,"type":"annie_chooses"}"]
+- test1
+- test2
+- test3
+paul: test3
+annie: Of course you would say that! I'm your biggest fan, after all...
+annie: A third choice for testing purposes. More choices will be added over time.
+annie: Misery isn't dead, is she?!
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
-leave paper_bg [animation="Fade Out Down" length="1.0" wait="true"]
+leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
 [clear time="1.0" step="false" text="false" portraits="false" music="false" positions="false" style="false"]
