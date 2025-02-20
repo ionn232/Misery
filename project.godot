@@ -54,7 +54,8 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 glossary/default_case_sensitive=true
 variables={
-"ANNIE_MOOD": 0.0
+"ANNIE_MOOD": 0.0,
+"TRUE": true
 }
 
 [display]
