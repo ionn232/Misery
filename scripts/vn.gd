@@ -72,21 +72,26 @@ func _process(delta: float) -> void:
 func _execute_after_delay() -> void:
 	var choices = get_tree().get_nodes_in_group('dialogic_choice_button')
 	match last_argument["type"]:
-		
+		"normal":
+			if(last_argument["index"] == "0"):
+				show_choices(3)
+			
 		"annie_chooses":
 			if(last_argument["index"] == "1"):
+				show_choices(3)
 				annie_objective_choice = 2
 		
 		"new_choices":
 			if(last_argument["index"] == "2"):
+				show_choices(2)
 				initial_choice_count = 2
 				current_choice_count = initial_choice_count
 				max_choices_available = 5
 			
-			var i:int=0
-			for choice:DialogicNode_ChoiceButton in choices:
-				choice.visible = (i<initial_choice_count)
-				i += 1
+			#var i:int=0
+			#for choice:DialogicNode_ChoiceButton in choices:
+				#choice.visible = (i<initial_choice_count)
+				#i += 1
 		
 
 func show_choices(count:int)->void:

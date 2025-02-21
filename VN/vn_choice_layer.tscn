@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhk6j6eb6e3q"]
+[gd_scene load_steps=8 format=3 uid="uid://dhk6j6eb6e3q"]
 
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.gd" id="1_kurgw"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="1_w632k"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="2_mgko6"]
 [ext_resource type="AudioStream" uid="uid://b6c1p14bc20p1" path="res://addons/dialogic/Example Assets/sound-effects/typing1.wav" id="3_mql8i"]
+[ext_resource type="SpriteFrames" uid="uid://cwxk3p32k8o25" path="res://VN/textbox_frames.tres" id="3_o6ss3"]
 [ext_resource type="AudioStream" uid="uid://c2viukvbub6v6" path="res://addons/dialogic/Example Assets/sound-effects/typing4.wav" id="4_420fr"]
 
 [sub_resource type="AudioStream" id="AudioStream_pe27w"]
@@ -35,71 +36,65 @@ mouse_filter = 2
 alignment = 1
 metadata/_edit_layout_mode = 1
 
-[node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
 [node name="DialogicNode_ChoiceButton2" type="Button" parent="Choices"]
-visible = false
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
 layout_mode = 2
+theme_type_variation = &"FlatButton"
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton2"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="DialogicNode_ChoiceButton4" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton5" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton6" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton7" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton8" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton9" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton10" type="Button" parent="Choices"]
-visible = false
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton2/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
 
 [node name="DialogicNode_ChoiceButton11" type="Button" parent="Choices"]
-visible = false
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
 layout_mode = 2
+theme_type_variation = &"FlatButton"
 text = "Some text"
 script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton11"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton11/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
 
 [node name="DialogicNode_ButtonSound" type="AudioStreamPlayer" parent="Choices"]
 unique_name_in_owner = true
@@ -107,3 +102,223 @@ script = ExtResource("2_mgko6")
 sound_pressed = ExtResource("3_mql8i")
 sound_hover = ExtResource("4_420fr")
 sound_focus = SubResource("AudioStream_pe27w")
+
+[node name="DialogicNode_ChoiceButton12" type="Button" parent="Choices"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton12"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton12/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
+
+[node name="DialogicNode_ChoiceButton13" type="Button" parent="Choices"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton13"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton13/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
+
+[node name="DialogicNode_ChoiceButton14" type="Button" parent="Choices"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton14"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton14/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
+
+[node name="DialogicNode_ChoiceButton15" type="Button" parent="Choices"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton15"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton15/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
+
+[node name="DialogicNode_ChoiceButton16" type="Button" parent="Choices"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton16"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton16/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
+
+[node name="DialogicNode_ChoiceButton17" type="Button" parent="Choices"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton17"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton17/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
+
+[node name="DialogicNode_ChoiceButton18" type="Button" parent="Choices"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Choices/DialogicNode_ChoiceButton18"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton18/PanelContainer"]
+position = Vector2(25, 20)
+scale = Vector2(0.02, 0.02)
+sprite_frames = ExtResource("3_o6ss3")
+animation = &"unfold"
+
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton2" to="Choices/DialogicNode_ChoiceButton2" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton11" to="Choices/DialogicNode_ChoiceButton11" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton12" to="Choices/DialogicNode_ChoiceButton12" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton13" to="Choices/DialogicNode_ChoiceButton13" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton14" to="Choices/DialogicNode_ChoiceButton14" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton15" to="Choices/DialogicNode_ChoiceButton15" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton16" to="Choices/DialogicNode_ChoiceButton16" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton17" to="Choices/DialogicNode_ChoiceButton17" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton18" to="Choices/DialogicNode_ChoiceButton18" method="_on_visibility_changed"]

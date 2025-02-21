@@ -127,6 +127,9 @@ func get_current_question_info() -> Dictionary:
 		if dialogic.has_subsystem('History'):
 			choice_info['visited_before'] = dialogic.History.has_event_been_visited(choice_index)
 
+		#hide all choices (custom edit for Misery)
+		choice_info['visible'] = false
+		
 		question_info['choices'].append(choice_info)
 
 	return question_info

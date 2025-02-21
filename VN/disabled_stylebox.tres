@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ova52krv04go"]
+
+[ext_resource type="Texture2D" uid="uid://crmnrwletf5md" path="res://VN/grunge-x-6-280x300.png" id="1_b3w0l"]
+
+[resource]
+texture = ExtResource("1_b3w0l")
