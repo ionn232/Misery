@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d04tvwyids61o"]
+[gd_scene load_steps=14 format=3 uid="uid://d04tvwyids61o"]
 
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
@@ -7,10 +7,8 @@
 [ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://resources/Exploration/paul_anim_frames.tres" id="5_msodk"]
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="6_knjoa"]
 [ext_resource type="Script" path="res://scenes/test_object.gd" id="7_nrqwd"]
-[ext_resource type="Texture2D" uid="uid://dr8cgw7t63d0t" path="res://resources/Interaction/f0.png" id="7_pj0su"]
-[ext_resource type="Texture2D" uid="uid://c3wdurv7fbemf" path="res://resources/Interaction/n1.png" id="8_cmg02"]
-[ext_resource type="Texture2D" uid="uid://cfdpcxukuh3f5" path="res://resources/Interaction/f1.png" id="8_lgtb0"]
-[ext_resource type="Texture2D" uid="uid://f67cghogbqha" path="res://resources/Interaction/f2.png" id="10_oanpw"]
+[ext_resource type="Texture2D" uid="uid://j7lwdxym4bq3" path="res://VN/s1.png" id="8_0it2s"]
+[ext_resource type="Texture2D" uid="uid://bnovgw2tc2jnd" path="res://VN/s2.png" id="9_5o7wd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbmoh"]
 size = Vector2(87.0001, 55.9998)
@@ -22,20 +20,14 @@ size = Vector2(125, 185.75)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_pj0su")
+"texture": ExtResource("8_0it2s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_cmg02")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_oanpw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_lgtb0")
+"texture": ExtResource("9_5o7wd")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0jlt"]
@@ -159,7 +151,7 @@ position = Vector2(516, 95)
 script = ExtResource("7_nrqwd")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Object"]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_bgo0d")
 
 [node name="ObjectArea" type="Area2D" parent="Object"]

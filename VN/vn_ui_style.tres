@@ -37,7 +37,14 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_eewis"]
 script = ExtResource("1_y10kd")
 scene = ExtResource("6_ew5ln")
-overrides = {}
+overrides = {
+"boxes_offset": "Vector2(300, 0)",
+"boxes_stylebox_disabled": "\"res://VN/disabled_stylebox.tres\"",
+"boxes_stylebox_focused": "\"res://VN/focused_option_stylebox.tres\"",
+"boxes_stylebox_hovered": "\"choice_panel_hover.tres\"",
+"boxes_stylebox_normal": "\"choice_panel_normal.tres\"",
+"boxes_stylebox_pressed": "\"res://VN/empty_stylebox.tres\""
+}
 
 [sub_resource type="Resource" id="Resource_af52n"]
 script = ExtResource("1_y10kd")
@@ -77,4 +84,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_y10kd")]([])
-metadata/_latest_layer = "10"
+metadata/_latest_layer = "15"

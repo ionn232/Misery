@@ -1,5 +1,8 @@
 class_name DialogicNode_ChoiceButton
 extends Button
+
+@onready var sprite: AnimatedSprite2D = $PanelContainer/Sprite
+
 ## The button allows the player to make a choice in the Dialogic system.
 ##
 ## This class is used in the Choice Layer. [br]
@@ -43,3 +46,8 @@ func set_choice_text(new_text: String) -> void:
 		text_node.text = new_text
 	else:
 		text = new_text
+
+func _on_visibility_changed() -> void:
+	if (sprite):
+		sprite.play('unfold')
+	pass # Replace with function body.
