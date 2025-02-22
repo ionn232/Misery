@@ -1,5 +1,7 @@
 extends Control
 
+const AI_EXAMPLE:String = "In the dim glow of the candlelit chamber, Misery Chastain discovered a delicate paper clip, its metallic sheen a stark contrast against the aged parchment of Ian's heartfelt letter, a missive that spoke of undying love and whispered secrets. Nearby, an apple, polished to a crimson gleam, lay untouched on the windowsill, a symbol of forbidden temptation and the bittersweet choices that lay ahead. As Misery pondered her fate, her gaze fell upon a small pig ceramic figure, a cherished keepsake from Geoffrey, its presence a poignant reminder of innocence lost and the fragile bonds of friendship that tethered her heart to both men."
+
 @onready var bg_0: Sprite2D = $"../bg0"
 @onready var bg_1: Sprite2D = $"../bg1"
 
@@ -35,6 +37,8 @@ func _ready():
 	choice_1.visible = false
 	choice_2.visible = false
 	choice_3.visible = false
+	
+	Dialogic.timeline_ended.connect(exit_writing_stage)
 
 func _process(delta:float) -> void:
 	match current_stage:
@@ -60,6 +64,11 @@ func _process(delta:float) -> void:
 			button_1.get_parent().visible = false
 			button_2.get_parent().visible = false
 			button_3.get_parent().visible = false
+			print('execute script misery.py')
+			Dialogic.VAR.AI_OUTPUT = AI_EXAMPLE
+			Dialogic.start('ai_output')
+			current_stage = -1 #disable process loop
+			
 
 func _button_pressed(button:Button):
 	match current_stage:
@@ -80,9 +89,6 @@ func _button_pressed(button:Button):
 			bg_1.visible = true
 			choice_3.get_child(1).play('unfold')
 			button_1.grab_focus()
-		4:
-			print('llamar IA y pasar a display de texto')
-			pass
 	current_stage += 1
 
 func _stage_back(choice:PanelContainer):
@@ -99,7 +105,6 @@ func _stage_back(choice:PanelContainer):
 	button_1.grab_focus()
 	hide_time.start()
 
-
 func _on_hide_time_timeout() -> void:
 	match current_stage:
 		1:
@@ -111,3 +116,6 @@ func _on_hide_time_timeout() -> void:
 			choice_3.visible = false
 		3:
 			pass 
+
+func exit_writing_stage():
+	get_tree().reload_current_scene()

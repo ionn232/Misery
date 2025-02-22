@@ -55,7 +55,7 @@ enum AnimationsNewText {NONE, WIGGLE}
 
 @export_subgroup("Size & Position")
 @export var box_size: Vector2 = Vector2(550, 110)
-@export var box_margin_bottom: int = 15
+@export var box_margin_bottom: int = 600
 
 @export_subgroup("Animation")
 @export var box_animation_in: AnimationsIn = AnimationsIn.FADE_UP
