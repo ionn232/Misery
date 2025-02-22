@@ -55,6 +55,7 @@ text/autopauses={}
 glossary/default_case_sensitive=true
 variables={
 "ANNIE_MOOD": 0.0,
+"ENDING": "",
 "TRUE": true
 }
 

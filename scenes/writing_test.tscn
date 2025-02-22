@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs563rw6eec4m"]
+[gd_scene load_steps=4 format=3 uid="uid://bs563rw6eec4m"]
 
 [ext_resource type="Texture2D" uid="uid://c0l8d7kjr24xg" path="res://resources/Writing/Option A.png" id="1_n0swy"]
 [ext_resource type="Script" path="res://scenes/control.gd" id="2_qhvjh"]
+[ext_resource type="Texture2D" uid="uid://0rojsmmumqss" path="res://resources/Writing/Option_B.png" id="2_yloms"]
 
 [node name="WritingTest" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="bg0" type="Sprite2D" parent="."]
 position = Vector2(961, 541)
 texture = ExtResource("1_n0swy")
+metadata/_edit_lock_ = true
+
+[node name="bg1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(961, 541)
+texture = ExtResource("2_yloms")
 metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="."]
@@ -18,107 +25,96 @@ offset_right = 1924.0
 offset_bottom = 1081.0
 script = ExtResource("2_qhvjh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="Button1" type="PanelContainer" parent="Control"]
 layout_mode = 0
 offset_left = 720.0
-offset_top = 119.0
-offset_right = 926.0
-offset_bottom = 259.0
-alignment = 1
+offset_top = 165.0
+offset_right = 920.0
+offset_bottom = 215.0
 
-[node name="Opt1" type="Button" parent="Control/VBoxContainer"]
+[node name="Button" type="Button" parent="Control/Button1"]
 layout_mode = 2
 size_flags_vertical = 3
 action_mode = 0
-text = "Hand Clock"
+text = "opt1"
 
-[node name="Opt2" type="Button" parent="Control/VBoxContainer"]
+[node name="Button2" type="PanelContainer" parent="Control"]
 layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Umbrella"
-
-[node name="Opt3" type="Button" parent="Control/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Bowtie"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_left = 985.0
-offset_top = 199.0
-offset_right = 1191.0
-offset_bottom = 339.0
-alignment = 1
-
-[node name="Opt1" type="Button" parent="Control/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Ball"
-
-[node name="Opt2" type="Button" parent="Control/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Teddy Bear"
-
-[node name="Opt3" type="Button" parent="Control/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Rubik Cube"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_left = 720.0
-offset_top = 317.0
-offset_right = 926.0
-offset_bottom = 457.0
-alignment = 1
-
-[node name="Opt1" type="Button" parent="Control/VBoxContainer3"]
-layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Piano"
-
-[node name="Opt2" type="Button" parent="Control/VBoxContainer3"]
-layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Guitar"
-
-[node name="Opt3" type="Button" parent="Control/VBoxContainer3"]
-layout_mode = 2
-size_flags_vertical = 3
-action_mode = 0
-text = "Flute"
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 722.0
-offset_top = 164.0
-offset_right = 926.0
-offset_bottom = 213.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 986.0
-offset_top = 244.0
-offset_right = 1190.0
+offset_left = 984.0
+offset_top = 243.0
+offset_right = 1184.0
 offset_bottom = 293.0
+
+[node name="Button" type="Button" parent="Control/Button2"]
+layout_mode = 2
+size_flags_vertical = 3
+action_mode = 0
+text = "opt2"
+
+[node name="Button3" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 362.0
+offset_right = 920.0
+offset_bottom = 412.0
+
+[node name="Button" type="Button" parent="Control/Button3"]
+layout_mode = 2
+size_flags_vertical = 3
+action_mode = 0
+text = "opt3"
+
+[node name="Choice3" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -501.0
+offset_right = 270.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/Choice3"]
+layout_mode = 2
+text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 722.0
-offset_top = 362.0
-offset_right = 926.0
-offset_bottom = 411.0
+[node name="Choice1" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -500.0
+offset_right = 575.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/Choice1"]
+layout_mode = 2
+text = "Final Choice Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Choice2" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -500.0
+offset_right = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/Choice2"]
+layout_mode = 2
+text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
