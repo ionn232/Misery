@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs563rw6eec4m"]
+[gd_scene load_steps=8 format=3 uid="uid://bs563rw6eec4m"]
 
 [ext_resource type="Texture2D" uid="uid://c0l8d7kjr24xg" path="res://resources/Writing/Option A.png" id="1_n0swy"]
 [ext_resource type="Script" path="res://scenes/control.gd" id="2_qhvjh"]
 [ext_resource type="Texture2D" uid="uid://0rojsmmumqss" path="res://resources/Writing/Option_B.png" id="2_yloms"]
+[ext_resource type="StyleBox" uid="uid://cb17shdbvck2a" path="res://VN/focused_option_stylebox.tres" id="4_k3wih"]
+[ext_resource type="SpriteFrames" uid="uid://dqbgpgadhxpym" path="res://VN/paper_bg_character.tres" id="4_q7o5l"]
+[ext_resource type="StyleBox" uid="uid://ova52krv04go" path="res://VN/disabled_stylebox.tres" id="5_abdmx"]
+[ext_resource type="StyleBox" uid="uid://dn2781hdpw12" path="res://VN/empty_stylebox.tres" id="6_jef1r"]
 
 [node name="WritingTest" type="Node2D"]
 
@@ -26,6 +30,7 @@ offset_bottom = 1081.0
 script = ExtResource("2_qhvjh")
 
 [node name="Button1" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 720.0
 offset_top = 165.0
@@ -35,10 +40,16 @@ offset_bottom = 215.0
 [node name="Button" type="Button" parent="Control/Button1"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = ExtResource("4_k3wih")
+theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/normal = ExtResource("6_jef1r")
 action_mode = 0
 text = "opt1"
 
 [node name="Button2" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 984.0
 offset_top = 243.0
@@ -48,10 +59,16 @@ offset_bottom = 293.0
 [node name="Button" type="Button" parent="Control/Button2"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = ExtResource("4_k3wih")
+theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/normal = ExtResource("6_jef1r")
 action_mode = 0
 text = "opt2"
 
 [node name="Button3" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 720.0
 offset_top = 362.0
@@ -61,10 +78,16 @@ offset_bottom = 412.0
 [node name="Button" type="Button" parent="Control/Button3"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = ExtResource("4_k3wih")
+theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/normal = ExtResource("6_jef1r")
 action_mode = 0
 text = "opt3"
 
 [node name="Choice3" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -80,11 +103,28 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="Control/Choice3"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="paper" type="AnimatedSprite2D" parent="Control/Choice3"]
+self_modulate = Color(1, 1, 0.870588, 1)
+show_behind_parent = true
+position = Vector2(250, 250)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("4_q7o5l")
+animation = &"fold"
+frame = 5
+
+[node name="Button" type="Button" parent="Control/Choice3"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("4_k3wih")
+theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/normal = ExtResource("6_jef1r")
+
 [node name="Choice1" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -96,11 +136,28 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="Control/Choice1"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="paper" type="AnimatedSprite2D" parent="Control/Choice1"]
+self_modulate = Color(1, 1, 0.870588, 1)
+show_behind_parent = true
+position = Vector2(250, 250)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("4_q7o5l")
+animation = &"fold"
+frame = 5
+
+[node name="Button" type="Button" parent="Control/Choice1"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("4_k3wih")
+theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/normal = ExtResource("6_jef1r")
+
 [node name="Choice2" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -115,6 +172,28 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="Control/Choice2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="paper" type="AnimatedSprite2D" parent="Control/Choice2"]
+self_modulate = Color(1, 1, 0.870588, 1)
+show_behind_parent = true
+position = Vector2(250, 250)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("4_q7o5l")
+animation = &"fold"
+frame = 5
+
+[node name="Button" type="Button" parent="Control/Choice2"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("4_k3wih")
+theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/normal = ExtResource("6_jef1r")
+
+[node name="HideTime" type="Timer" parent="Control"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Control/HideTime" to="Control" method="_on_hide_time_timeout"]
