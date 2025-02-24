@@ -7,7 +7,7 @@ extends Node2D
 @onready var debug_options : PopupMenu = debug_menu.get_popup()
 
 
-const EXPLORATION_TEST = preload("res://scenes/exploration_test.tscn")
+const EXPLORATION = preload("res://scenes/exploration_test.tscn")
 const INTERACTION_TEST = preload("res://scenes/interaction_test.tscn")
 const WRITING_TEST = preload("res://scenes/writing_test.tscn")
 
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	#restart scene
 	if (Input.is_action_just_pressed("DEBUG_reset")):
 		get_tree().reload_current_scene()
-	
+	#debug options
 	if (Input.is_action_just_pressed("DEBUG_1")):
 		handle_option(1)
 	elif (Input.is_action_just_pressed("DEBUG_2")):
@@ -36,18 +36,18 @@ func _process(delta: float) -> void:
 func handle_option(index: int):
 	#lock/unlock camera rotation
 	if (index == 1):
-		#var test_exploration = Exploration.new()
-		#add_child(test_exploration)
-		#test_exploration.assign_camera(camera.get_path())
-		var test_exploration = EXPLORATION_TEST.instantiate()
+		var test_exploration = EXPLORATION.instantiate()
 		add_child(test_exploration)
 		test_exploration.assign_camera(camera.get_path())
+		test_exploration.load_scene(0)
 	if (index == 2):
 		var test_writing = WRITING_TEST.instantiate()
 		add_child(test_writing)
+		test_writing.load_scene(0)
 	if (index == 3):
 		var test_interaction = INTERACTION_TEST.instantiate()
 		add_child(test_interaction)
+		test_interaction.load_scene(0)
 	if (index == 4):
 		camera.ignore_rotation = debug_options.is_item_checked(4)
 		debug_options.set_item_checked(4, !debug_options.is_item_checked(4))

@@ -1,0 +1,7 @@
+[style name="vn_stock"]
+join paper_bg center [animation="Fade In" wait="true"]
+join objects_char (porcelain) center [animation="Fade In" wait="true"]
+paul: Three figures of three animals placed in a straight line. The first is a penguin, the second one a camel and the third one a giraffe.
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+leave objects_char [animation="Fade Out" wait="true"]
+leave paper_bg [animation="Fade Out" wait="true"]

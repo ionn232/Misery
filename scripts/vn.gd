@@ -22,13 +22,14 @@ var choice_addition_time:float = NEW_CHOICE_CD
 
 var last_argument
 
+var timeline_name:String
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Dialogic.start('test0')
+func test_ready() -> void:
+	Dialogic.start(timeline_name)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.Choices.choice_selected.connect(_choice_made)
 	get_viewport().gui_focus_changed.connect(_update_selection)
-	#Viewport.gui_focus_changed.connect(_update_selection)
 
 func _choice_made(info:Dictionary):
 	annie_objective_choice = -1
@@ -88,11 +89,6 @@ func _execute_after_delay() -> void:
 				current_choice_count = initial_choice_count
 				max_choices_available = 5
 			
-			#var i:int=0
-			#for choice:DialogicNode_ChoiceButton in choices:
-				#choice.visible = (i<initial_choice_count)
-				#i += 1
-		
 
 func show_choices(count:int)->void:
 	var i:int=0

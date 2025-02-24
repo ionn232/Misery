@@ -1,0 +1,7 @@
+[style name="vn_stock"]
+join paper_bg center [animation="Fade In" wait="true"]
+join objects_char (curtains_fish) center [animation="Fade In" wait="true"]
+paul: A plastic curtain is hung above the bathtub showing seagrass and fishes. In general the bathroom is decorated with seabed motifs.
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+leave objects_char [animation="Fade Out" wait="true"]
+leave paper_bg [animation="Fade Out" wait="true"]

@@ -1,0 +1,7 @@
+[style name="vn_stock"]
+join paper_bg center [animation="Fade In" wait="true"]
+join objects_char (magnets) center [animation="Fade In" wait="true"]
+paul: Some photos of a pig, with the name Misery on them. A dog also appears on some of them but it is clearly not the highlight of the pictures.
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+leave objects_char [animation="Fade Out" wait="true"]
+leave paper_bg [animation="Fade Out" wait="true"]

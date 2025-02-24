@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://d04tvwyids61o"]
+[gd_scene load_steps=65 format=3 uid="uid://d04tvwyids61o"]
 
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
@@ -6,9 +6,15 @@
 [ext_resource type="SpriteFrames" uid="uid://cwxk3p32k8o25" path="res://VN/textbox_frames.tres" id="5_6xoc6"]
 [ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://resources/Exploration/paul_anim_frames.tres" id="5_msodk"]
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="6_knjoa"]
-[ext_resource type="Script" path="res://scenes/test_object.gd" id="7_nrqwd"]
+[ext_resource type="Script" path="res://scripts/objects/test_object.gd" id="7_nrqwd"]
 [ext_resource type="Texture2D" uid="uid://j7lwdxym4bq3" path="res://VN/s1.png" id="8_0it2s"]
 [ext_resource type="Texture2D" uid="uid://bnovgw2tc2jnd" path="res://VN/s2.png" id="9_5o7wd"]
+[ext_resource type="Script" path="res://scripts/objects/painting.gd" id="10_tgoe7"]
+[ext_resource type="Script" path="res://scripts/objects/porcelain_figures.gd" id="11_xnkex"]
+[ext_resource type="Script" path="res://scripts/objects/snowball.gd" id="12_bgrk2"]
+[ext_resource type="Script" path="res://scripts/objects/magnets.gd" id="13_lyptv"]
+[ext_resource type="Script" path="res://scripts/objects/pillow.gd" id="14_puvco"]
+[ext_resource type="Script" path="res://scripts/objects/curtain.gd" id="15_4i4gl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1h4g"]
 size = Vector2(39.75, 16.5)
@@ -135,6 +141,18 @@ size = Vector2(39.25, 79.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbj1m"]
 size = Vector2(39, 160.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfldm"]
+size = Vector2(40.25, 38.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8n4m"]
+size = Vector2(10.75, 39.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15hvv"]
+size = Vector2(15.5, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jas1u"]
+size = Vector2(40, 10.75)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbmoh"]
 size = Vector2(87.0001, 55.9998)
 
@@ -179,7 +197,7 @@ polygon = PackedVector2Array(38.5, 79, 38.5, 159, 39.25, 116.75, 276.5, 119.5, 3
 
 [node name="wall2" type="CollisionPolygon2D" parent="map/collisions"]
 build_mode = 1
-polygon = PackedVector2Array(38.5, 202.75, 39.25, 280, 19.25, 279.25, 19.25, 339.75, -21.25, 339.75, -22, 279.25, -41.25, 280.75, -40.5, 199.25, -40.5, 359, 40.25, 359)
+polygon = PackedVector2Array(39.25, 198.25, 39.25, 280, 19.25, 279.25, 19.25, 339.75, -21.25, 339.75, -22, 279.25, -41.25, 280.75, -40.5, 199.25, -40.5, 359, 40.25, 359)
 
 [node name="wall3" type="CollisionPolygon2D" parent="map/collisions"]
 build_mode = 1
@@ -265,7 +283,6 @@ shape = SubResource("RectangleShape2D_6ea1c")
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="map/collisions"]
 position = Vector2(-220.625, 19.375)
 rotation = -0.811578
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1vrxl")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="map/collisions"]
@@ -368,8 +385,26 @@ shape = SubResource("RectangleShape2D_ud148")
 position = Vector2(-20, -40.375)
 shape = SubResource("RectangleShape2D_rbj1m")
 
+[node name="CollisionShape2D42" type="CollisionShape2D" parent="map/collisions"]
+position = Vector2(139.625, -260.063)
+shape = SubResource("RectangleShape2D_lfldm")
+
+[node name="room_transition_collisions" type="StaticBody2D" parent="map"]
+
+[node name="door1" type="CollisionShape2D" parent="map/room_transition_collisions"]
+position = Vector2(44.25, 177.75)
+shape = SubResource("RectangleShape2D_m8n4m")
+
+[node name="door2" type="CollisionShape2D" parent="map/room_transition_collisions"]
+position = Vector2(47, 58.5)
+shape = SubResource("RectangleShape2D_15hvv")
+
+[node name="door3" type="CollisionShape2D" parent="map/room_transition_collisions"]
+position = Vector2(-1.25, 284.625)
+shape = SubResource("RectangleShape2D_jas1u")
+
 [node name="Paul_UC" type="CharacterBody2D" parent="."]
-position = Vector2(526, 508)
+position = Vector2(816, 414)
 rotation = 3.14159
 motion_mode = 1
 floor_block_on_wall = false
@@ -442,17 +477,104 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Object" type="Node2D" parent="."]
-position = Vector2(516, 95)
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="test_object" type="Node2D" parent="Objects"]
+visible = false
+position = Vector2(506, 101)
 script = ExtResource("7_nrqwd")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Object"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Objects/test_object"]
 scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_bgo0d")
 
-[node name="ObjectArea" type="Area2D" parent="Object"]
+[node name="ObjectArea" type="Area2D" parent="Objects/test_object"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/ObjectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/test_object/ObjectArea"]
+shape = SubResource("CircleShape2D_d0jlt")
+
+[node name="painting" type="Node2D" parent="Objects"]
+visible = false
+position = Vector2(-1167, 438)
+script = ExtResource("10_tgoe7")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Objects/painting"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_bgo0d")
+
+[node name="ObjectArea" type="Area2D" parent="Objects/painting"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/painting/ObjectArea"]
+shape = SubResource("CircleShape2D_d0jlt")
+
+[node name="porcelain_figures" type="Node2D" parent="Objects"]
+visible = false
+position = Vector2(-558, 1521)
+script = ExtResource("11_xnkex")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Objects/porcelain_figures"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_bgo0d")
+
+[node name="ObjectArea" type="Area2D" parent="Objects/porcelain_figures"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/porcelain_figures/ObjectArea"]
+shape = SubResource("CircleShape2D_d0jlt")
+
+[node name="snowball" type="Node2D" parent="Objects"]
+visible = false
+position = Vector2(-595, 2537)
+script = ExtResource("12_bgrk2")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Objects/snowball"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_bgo0d")
+
+[node name="ObjectArea" type="Area2D" parent="Objects/snowball"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/snowball/ObjectArea"]
+shape = SubResource("CircleShape2D_d0jlt")
+
+[node name="magnets" type="Node2D" parent="Objects"]
+visible = false
+position = Vector2(865, 2283)
+script = ExtResource("13_lyptv")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Objects/magnets"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_bgo0d")
+
+[node name="ObjectArea" type="Area2D" parent="Objects/magnets"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/magnets/ObjectArea"]
+shape = SubResource("CircleShape2D_d0jlt")
+
+[node name="pillow" type="Node2D" parent="Objects"]
+visible = false
+position = Vector2(-374, 1622)
+script = ExtResource("14_puvco")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Objects/pillow"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_bgo0d")
+
+[node name="ObjectArea" type="Area2D" parent="Objects/pillow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/pillow/ObjectArea"]
+shape = SubResource("CircleShape2D_d0jlt")
+
+[node name="shower_curtain" type="Node2D" parent="Objects"]
+visible = false
+position = Vector2(920, 1449)
+script = ExtResource("15_4i4gl")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Objects/shower_curtain"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_bgo0d")
+
+[node name="ObjectArea" type="Area2D" parent="Objects/shower_curtain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/shower_curtain/ObjectArea"]
 shape = SubResource("CircleShape2D_d0jlt")
 
 [connection signal="timeout" from="Paul_UC/PushTimer" to="Paul_UC" method="wheelchair_push"]
