@@ -448,7 +448,7 @@ animation = &"push"
 flip_h = true
 
 [node name="TimeLimit" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 300.0
 one_shot = true
 autostart = true
 
