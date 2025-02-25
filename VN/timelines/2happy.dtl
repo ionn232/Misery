@@ -1,7 +1,7 @@
 [style name="vn_stock"]
 [background arg="res://resources/Interaction/backgrounds/bg_kitchen.png" fade="1.0"]
 join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
-join annie left [animation="Fade In" length="1.0" wait="true"]
+join annie (annie_happy) left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
 annie: happy interaction, last iteration
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]

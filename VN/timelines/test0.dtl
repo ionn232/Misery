@@ -3,8 +3,8 @@
 join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
-annie: This is a test dialogue. Oh the misery.
-annie: Write my novel (disabled message test)
+annie (annie_angry): This is a test dialogue. Oh the misery.
+annie (annie_happy): Write my novel (disabled message test)
 [signal arg_type="dict" arg="{"index":"0","scene":0,"type":"normal"}"]
 - No! | [if {TRUE} == false] [else="disable" alt_text="No!"]
 	paul: No!

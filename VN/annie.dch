@@ -8,14 +8,32 @@
 "sound_moods": {},
 "style": "vn_ui_style"
 },
-"default_portrait": "annie0",
+"default_portrait": "annie_neutral",
 "description": "bad bitch",
 "display_name": "Annie",
 "mirror": false,
 "nicknames": ["your biggest fan"],
 "offset": Vector2(0, 0),
 "portraits": {
-"annie0": {
+"annie_angry": {
+"export_overrides": {
+"image": "\"res://resources/Interaction/annie_angry.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -225),
+"scale": 0.75,
+"scene": ""
+},
+"annie_happy": {
+"export_overrides": {
+"image": "\"res://resources/Interaction/annie_happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -225),
+"scale": 0.75,
+"scene": ""
+},
+"annie_neutral": {
 "export_overrides": {
 "image": "\"res://resources/Interaction/Annie sprite.png\""
 },
