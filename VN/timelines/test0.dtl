@@ -21,7 +21,7 @@ annie: A second choice for testing purposes. This time Annie will select choice 
 - test3
 paul: test3
 annie: Of course you would say that! I'm your biggest fan, after all...
-annie: A third choice for testing purposes. More choices will be added over time.
+annie: A third choice for testing purposes. Choices will be removed over time (they can also be added, if needed).
 annie: Misery isn't dead, is she?!
 [signal arg_type="dict" arg="{"index":"2","scene":0,"type":"new_choices"}"]
 - No

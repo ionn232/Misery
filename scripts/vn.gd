@@ -68,11 +68,21 @@ func _process(delta: float) -> void:
 			annie_action_time = ANNIE_ACTION_CD
 		annie_action_time -= delta
 	
-	#New choices are being added
+	#New choices are being added 
 	elif (max_choices_available >= 0 && current_choice_count < max_choices_available):
 		if (choice_addition_time <= 0.0):
 			choices[current_choice_count].visible = true
 			current_choice_count += 1
+			choice_addition_time = NEW_CHOICE_CD
+		choice_addition_time -= delta
+	
+	#choices are being removed
+	elif (max_choices_available >= 0 && current_choice_count > max_choices_available):
+		if (choice_addition_time <= 0.0):
+			if (choices[current_choice_count-1].has_focus()):
+				choices[current_choice_count-2].grab_focus()
+			choices[current_choice_count-1].fold_button()
+			current_choice_count -= 1
 			choice_addition_time = NEW_CHOICE_CD
 		choice_addition_time -= delta
 
@@ -90,10 +100,10 @@ func _execute_after_delay() -> void:
 		
 		"new_choices":
 			if(last_argument["index"] == "2"):
-				show_choices(2)
-				initial_choice_count = 2
+				show_choices(5)
+				initial_choice_count = 5
 				current_choice_count = initial_choice_count
-				max_choices_available = 5
+				max_choices_available = 2
 			
 
 func show_choices(count:int)->void:
