@@ -24,12 +24,18 @@ var last_argument
 
 var timeline_name:String
 
+signal timeline_over
+
 # Called when the node enters the scene tree for the first time.
-func test_ready() -> void:
+func vn_ready() -> void:
 	Dialogic.start(timeline_name)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.Choices.choice_selected.connect(_choice_made)
 	get_viewport().gui_focus_changed.connect(_update_selection)
+	Dialogic.timeline_ended.connect(end_phase)
+
+func end_phase():
+	timeline_over.emit()
 
 func _choice_made(info:Dictionary):
 	annie_objective_choice = -1

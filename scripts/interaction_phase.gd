@@ -1,6 +1,17 @@
+class_name Interaction
 extends Node2D
 
 @onready var vn: Node2D = $VN
+
+var phase_index:int
+
+signal phase_concluded
+
+func _ready() -> void:
+	vn.timeline_over.connect(end_phase)
+
+func end_phase():
+	phase_concluded.emit()
 
 func load_scene(index:int):
 	match index:
@@ -18,5 +29,5 @@ func load_scene(index:int):
 			vn.timeline_name = '2happy'
 		6: #final interaction (mad)
 			vn.timeline_name = '2mad'
-	vn.test_ready()
-	
+	vn.vn_ready()
+	phase_index = int(((index-0.5) / 3) + 1)

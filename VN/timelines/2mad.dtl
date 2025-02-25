@@ -3,6 +3,7 @@
 join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
+annie: irritable interaction, last iteration
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
 leave paper_bg [animation="Fade Out" length="1.0" wait="true"]

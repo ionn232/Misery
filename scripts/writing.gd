@@ -1,6 +1,9 @@
+class_name Writing
 extends Node2D
 
 const AI_EXAMPLE:String = "In the dim glow of the candlelit chamber, Misery Chastain discovered a delicate paper clip, its metallic sheen a stark contrast against the aged parchment of Ian's heartfelt letter, a missive that spoke of undying love and whispered secrets. Nearby, an apple, polished to a crimson gleam, lay untouched on the windowsill, a symbol of forbidden temptation and the bittersweet choices that lay ahead. As Misery pondered her fate, her gaze fell upon a small pig ceramic figure, a cherished keepsake from Geoffrey, its presence a poignant reminder of innocence lost and the fragile bonds of friendship that tethered her heart to both men."
+
+const SELECTION_WEIGHT:float = 0.75
 
 @onready var bg_0: Sprite2D = $"bg0"
 @onready var bg_1: Sprite2D = $"bg1"
@@ -24,6 +27,10 @@ var selection3:String
 
 var current_stage:int = 1
 
+var phase_index:int
+
+signal phase_concluded
+
 func load_scene(index: int):
 	match index:
 		0: #test writing stage
@@ -34,8 +41,9 @@ func load_scene(index: int):
 			options_negative = ['Umbrella', 'Giraffe', 'Skyscraper']
 		2: #second writing stage
 			options_positive = ['Pig', 'Christian', 'Sea star']
-			options_neutral = ['Jesus', 'Christian', 'Lucius']
-			options_negative = ['Sea star', 'Sardine', 'Seagull']
+			options_neutral = ['Dog', 'Lucius', 'Sardine']
+			options_negative = ['Cat', 'Jesus', 'Seagull']
+	phase_index = index
 
 func _ready():
 	button_1.grab_focus()
@@ -77,6 +85,7 @@ func _process(delta:float) -> void:
 			button_1.get_parent().visible = false
 			button_2.get_parent().visible = false
 			button_3.get_parent().visible = false
+			register_choices()
 			print('execute script misery.py')
 			Dialogic.VAR.AI_OUTPUT = AI_EXAMPLE
 			Dialogic.start('ai_output')
@@ -131,4 +140,17 @@ func _on_hide_time_timeout() -> void:
 			pass 
 
 func exit_writing_stage():
-	get_tree().reload_current_scene()
+	phase_concluded.emit()
+
+func register_choices():
+	evaluate_selection(selection1)
+	evaluate_selection(selection2)
+	evaluate_selection(selection3)
+
+func evaluate_selection(selection:String):
+	if (selection in options_positive): #positive
+		Dialogic.VAR.ANNIE_MOOD += SELECTION_WEIGHT
+	elif(selection in options_negative): #negative
+		Dialogic.VAR.ANNIE_MOOD -= SELECTION_WEIGHT
+	#else: #neutral
+		#Dialogic.VAR.ANNIE_MOOD *= SELECTION_WEIGHT

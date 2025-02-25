@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
-[ext_resource type="Texture2D" uid="uid://d36e4ded8mncu" path="res://resources/Exploration/map_v1.png" id="2_stnxy"]
+[ext_resource type="Texture2D" uid="uid://bn5fmpnyx4cpu" path="res://resources/Exploration/map_last.png" id="2_qdhrr"]
 [ext_resource type="SpriteFrames" uid="uid://cwxk3p32k8o25" path="res://VN/textbox_frames.tres" id="5_6xoc6"]
 [ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://resources/Exploration/paul_anim_frames.tres" id="5_msodk"]
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="6_knjoa"]
@@ -20,7 +20,7 @@
 size = Vector2(39.75, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxsro"]
-size = Vector2(119.25, 39.75)
+size = Vector2(116.25, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfd1j"]
 size = Vector2(29.75, 24.75)
@@ -40,7 +40,7 @@ size = Vector2(119.25, 79.75)
 size = Vector2(28.25, 103)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55n8u"]
-size = Vector2(58.5, 18)
+size = Vector2(62.75, 20.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joiqs"]
 size = Vector2(28.25, 28.75)
@@ -64,7 +64,7 @@ size = Vector2(59, 19)
 size = Vector2(58.25, 19.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vrxl"]
-size = Vector2(38.5941, 38.8538)
+size = Vector2(39.7452, 41.4389)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydcq8"]
 radius = 15.0083
@@ -76,10 +76,10 @@ size = Vector2(28.75, 78.75)
 size = Vector2(19.75, 60.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfky5"]
-size = Vector2(99.5, 20)
+size = Vector2(102.5, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_suhay"]
-size = Vector2(58.375, 18.375)
+size = Vector2(57.5, 19.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nw75f"]
 size = Vector2(28.75, 30)
@@ -101,13 +101,13 @@ height = 93.5
 size = Vector2(198.5, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuod1"]
-size = Vector2(39, 140)
+size = Vector2(39, 142.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2gmd"]
 size = Vector2(49.5, 49.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul7ag"]
-size = Vector2(81, 79.75)
+size = Vector2(83, 79.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iya0y"]
 size = Vector2(27.5, 24.5)
@@ -176,15 +176,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0jlt"]
 radius = 65.0
 
-[node name="ExplorationTest" type="Node2D"]
+[node name="Exploration" type="Node2D"]
 script = ExtResource("1_0fxv7")
 
 [node name="map" type="Sprite2D" parent="."]
-position = Vector2(-53, 1144)
-scale = Vector2(4, 4)
-texture = ExtResource("2_stnxy")
+position = Vector2(75, 1345)
+rotation = 1.5708
+scale = Vector2(2.425, 2.425)
+texture = ExtResource("2_qdhrr")
 
 [node name="collisions" type="StaticBody2D" parent="map"]
+position = Vector2(-82.8866, 52.7835)
+rotation = -1.5708
+scale = Vector2(1.64948, 1.64948)
 
 [node name="outer_walls" type="CollisionPolygon2D" parent="map/collisions"]
 position = Vector2(1, 1.25)
@@ -220,15 +224,15 @@ position = Vector2(-70.875, -229.75)
 shape = SubResource("RectangleShape2D_p1h4g")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-160.875, -210.625)
+position = Vector2(-162, -212.25)
 shape = SubResource("RectangleShape2D_hxsro")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-245.625, -210.625)
+position = Vector2(-248.25, -213)
 shape = SubResource("RectangleShape2D_gfd1j")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-220.625, -120.75)
+position = Vector2(-224.5, -121)
 rotation = -2.68606
 shape = SubResource("RectangleShape2D_n10rd")
 
@@ -249,7 +253,7 @@ position = Vector2(54.625, -108.25)
 shape = SubResource("RectangleShape2D_y05d4")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(77, -10.5)
+position = Vector2(74.625, -11.625)
 shape = SubResource("RectangleShape2D_55n8u")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="map/collisions"]
@@ -265,32 +269,32 @@ position = Vector2(179.75, -15.25)
 shape = SubResource("RectangleShape2D_tsc45")
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-270.5, -80.75)
+position = Vector2(-274.5, -80.75)
 shape = SubResource("RectangleShape2D_20k2j")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-75.75, 24.375)
+position = Vector2(-77.5, 24.75)
 shape = SubResource("RectangleShape2D_eoiu6")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-250.5, 69.75)
+position = Vector2(-253.25, 69.5)
 shape = SubResource("RectangleShape2D_m81bs")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-70.5, 69.25)
+position = Vector2(-73, 69)
 shape = SubResource("RectangleShape2D_6ea1c")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-220.625, 19.375)
+position = Vector2(-224.041, 21.0972)
 rotation = -0.811578
 shape = SubResource("RectangleShape2D_1vrxl")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-195.5, 44.25)
+position = Vector2(-197.75, 44.75)
 shape = SubResource("CircleShape2D_ydcq8")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-265.125, 139.375)
+position = Vector2(-268.25, 139)
 shape = SubResource("RectangleShape2D_sawu2")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="map/collisions"]
@@ -298,19 +302,19 @@ position = Vector2(-270.625, 219.375)
 shape = SubResource("RectangleShape2D_hqv4h")
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-160.5, 349)
+position = Vector2(-163.75, 352.5)
 shape = SubResource("RectangleShape2D_qfky5")
 
 [node name="CollisionShape2D22" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-250.563, 349.688)
+position = Vector2(-253.25, 351.75)
 shape = SubResource("RectangleShape2D_suhay")
 
 [node name="CollisionShape2D23" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-97.875, 269.5)
+position = Vector2(-99.75, 271)
 shape = SubResource("RectangleShape2D_nw75f")
 
 [node name="CollisionShape2D24" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-222.875, 269.375)
+position = Vector2(-225.75, 270.5)
 shape = SubResource("RectangleShape2D_40jaq")
 
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="map/collisions"]
@@ -324,7 +328,7 @@ rotation = 2.34921
 shape = SubResource("RectangleShape2D_33wde")
 
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-160.75, 269)
+position = Vector2(-161.75, 271.5)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_qqddy")
 
@@ -333,15 +337,15 @@ position = Vector2(139.75, 139.5)
 shape = SubResource("RectangleShape2D_t1c1o")
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(259.5, 189.25)
+position = Vector2(259.5, 190.375)
 shape = SubResource("RectangleShape2D_kuod1")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(254.25, 284.375)
+position = Vector2(255.75, 287)
 shape = SubResource("RectangleShape2D_g2gmd")
 
 [node name="CollisionShape2D31" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(144.25, 239.625)
+position = Vector2(145, 241.313)
 shape = SubResource("RectangleShape2D_ul7ag")
 
 [node name="CollisionShape2D32" type="CollisionShape2D" parent="map/collisions"]
@@ -382,7 +386,7 @@ position = Vector2(259.125, 79.625)
 shape = SubResource("RectangleShape2D_ud148")
 
 [node name="CollisionShape2D41" type="CollisionShape2D" parent="map/collisions"]
-position = Vector2(-20, -40.375)
+position = Vector2(-21.5, -41)
 shape = SubResource("RectangleShape2D_rbj1m")
 
 [node name="CollisionShape2D42" type="CollisionShape2D" parent="map/collisions"]
@@ -390,6 +394,9 @@ position = Vector2(139.625, -260.063)
 shape = SubResource("RectangleShape2D_lfldm")
 
 [node name="room_transition_collisions" type="StaticBody2D" parent="map"]
+position = Vector2(-82.8866, 52.7835)
+rotation = -1.5708
+scale = Vector2(1.64948, 1.64948)
 
 [node name="door1" type="CollisionShape2D" parent="map/room_transition_collisions"]
 position = Vector2(44.25, 177.75)
@@ -441,13 +448,14 @@ animation = &"push"
 flip_h = true
 
 [node name="TimeLimit" type="Timer" parent="."]
-wait_time = 300.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
 [node name="ui" type="CanvasLayer" parent="."]
 
 [node name="DEBUG_label" type="Label" parent="ui"]
+visible = false
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 6.0
@@ -463,6 +471,7 @@ animation = &"default_sprite"
 script = ExtResource("6_knjoa")
 
 [node name="ui_timer" type="PanelContainer" parent="ui"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 1
 anchor_left = 1.0
@@ -480,7 +489,6 @@ vertical_alignment = 1
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="test_object" type="Node2D" parent="Objects"]
-visible = false
 position = Vector2(506, 101)
 script = ExtResource("7_nrqwd")
 
@@ -522,8 +530,7 @@ sprite_frames = SubResource("SpriteFrames_bgo0d")
 shape = SubResource("CircleShape2D_d0jlt")
 
 [node name="snowball" type="Node2D" parent="Objects"]
-visible = false
-position = Vector2(-595, 2537)
+position = Vector2(-851, 2537)
 script = ExtResource("12_bgrk2")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Objects/snowball"]
@@ -578,3 +585,4 @@ sprite_frames = SubResource("SpriteFrames_bgo0d")
 shape = SubResource("CircleShape2D_d0jlt")
 
 [connection signal="timeout" from="Paul_UC/PushTimer" to="Paul_UC" method="wheelchair_push"]
+[connection signal="timeout" from="TimeLimit" to="." method="_on_time_limit_timeout"]
