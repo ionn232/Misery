@@ -21,7 +21,7 @@ func _ready() -> void:
 	camera.rotation_smoothing_enabled = true
 	camera.position_smoothing_enabled = true
 
-func _process(delta: float) -> void:	
+func _process(delta: float) -> void:
 	#program exit
 	if (Input.is_action_just_pressed("ui_cancel")):
 		get_tree().quit()
@@ -113,14 +113,30 @@ func next_scene(phase):
 			phase.queue_free()
 			get_tree().reload_current_scene()
 
+
 func get_interaction_offset() -> int:
 	var annie_mood = Dialogic.VAR.ANNIE_MOOD
+	var offset:int 
 	if (annie_mood <= -1.0): # annie is irritable
-		return 2
+		offset = 2
 	elif (annie_mood < 1.0): # annie is neutral
-		return 0
+		offset = 0
 	else: # annie is manic
-		return 1
+		offset = 1
+	
+	if (current_phase == 1):
+		return offset
+	else:
+		var score_happy:int = Dialogic.VAR.ENDING_HAPPY + int(offset == 1)
+		var score_mad:int = Dialogic.VAR.ENDING_MAD + int(offset == 2)
+		var score_neutral:int = Dialogic.VAR.ENDING_NEUTRAL + int(offset == 0)
+		if (score_happy > score_mad && score_happy > score_neutral): #annie is manic
+			return 1
+		elif (score_mad > score_happy && score_mad > score_neutral): #annie is irritable
+			return 2
+		else: #annie is neutral
+			return 0
+
 
 func remove_scene_delayed(scene):
 	scene_aux = scene

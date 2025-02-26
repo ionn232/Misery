@@ -71,7 +71,9 @@ glossary/default_case_sensitive=true
 variables={
 "AI_OUTPUT": "...",
 "ANNIE_MOOD": 0.0,
-"ENDING": "",
+"ENDING_HAPPY": 0,
+"ENDING_MAD": 0,
+"ENDING_NEUTRAL": 0,
 "TRUE": true
 }
 

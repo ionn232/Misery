@@ -29,6 +29,8 @@ var current_stage:int = 1
 
 var phase_index:int
 
+@onready var random_seed:int = randi_range(1,3)
+
 signal phase_concluded
 
 func load_scene(index: int):
@@ -64,18 +66,12 @@ func _ready():
 func _process(delta:float) -> void:
 	match current_stage:
 		1:
-			button_1.text = options_positive[0]
-			button_2.text = options_neutral[0]
-			button_3.text = options_negative[0]
+			random_buttons(current_stage)
 		2:
-			button_1.text = options_positive[1]
-			button_2.text = options_neutral[1]
-			button_3.text = options_negative[1]
+			random_buttons(current_stage)
 			choice_1.visible = true
 		3:
-			button_1.text = options_positive[2]
-			button_2.text = options_neutral[2]
-			button_3.text = options_negative[2]
+			random_buttons(current_stage)
 			choice_1.visible = true
 			choice_2.visible = true
 		4:
@@ -99,11 +95,13 @@ func _button_pressed(button:Button):
 			choice_1.get_child(0).text = selection1
 			choice_1.get_child(1).play('unfold')
 			button_1.grab_focus()
+			reroll_seed()
 		2:
 			selection2 = button.text
 			choice_2.get_child(0).text = selection2
 			choice_2.get_child(1).play('unfold')
 			button_1.grab_focus()
+			reroll_seed()
 		3:
 			selection3 = button.text
 			choice_3.get_child(0).text = selection3
@@ -126,6 +124,7 @@ func _stage_back(choice:PanelContainer):
 			pass #can't go back once choice 3 is selected
 	button_1.grab_focus()
 	hide_time.start()
+	reroll_seed()
 
 func _on_hide_time_timeout() -> void:
 	match current_stage:
@@ -146,6 +145,24 @@ func register_choices():
 	evaluate_selection(selection1)
 	evaluate_selection(selection2)
 	evaluate_selection(selection3)
+
+func reroll_seed():
+	random_seed = randi_range(1,3)
+
+func random_buttons(stage:int):
+	match random_seed:
+		1:
+			button_1.text = options_positive[stage-1]
+			button_2.text = options_neutral[stage-1]
+			button_3.text = options_negative[stage-1]
+		2:
+			button_2.text = options_positive[stage-1]
+			button_1.text = options_neutral[stage-1]
+			button_3.text = options_negative[stage-1]
+		3:
+			button_3.text = options_positive[stage-1]
+			button_2.text = options_neutral[stage-1]
+			button_1.text = options_negative[stage-1]
 
 func evaluate_selection(selection:String):
 	if (selection in options_positive): #positive

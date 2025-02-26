@@ -88,23 +88,93 @@ func _process(delta: float) -> void:
 
 func _execute_after_delay() -> void:
 	var choices = get_tree().get_nodes_in_group('dialogic_choice_button')
-	match last_argument["type"]:
-		"normal":
-			if(last_argument["index"] == "0"):
-				show_choices(3)
-			
-		"annie_chooses":
-			if(last_argument["index"] == "1"):
-				show_choices(3)
-				annie_objective_choice = 2
+	match last_argument["scene"]:
+		'0': #test scene
+			match last_argument["type"]:
+				"normal":
+					if(last_argument["index"] == '0'):
+						show_choices(3)
+					
+				"annie_chooses":
+					if(last_argument["index"] == '1'):
+						show_choices(3)
+						annie_objective_choice = 2
+				
+				"new_choices":
+					if(last_argument["index"] == '2'):
+						show_choices(5)
+						initial_choice_count = 5
+						current_choice_count = initial_choice_count
+						max_choices_available = 2
+						
+		'1': #annie happy, first iteration
+			match last_argument["type"]:
+				"normal":
+					show_choices(3)
+				"annie_chooses":
+					pass
+				"new_choices":
+					if(last_argument["index"] == '0'):
+						show_choices(3)
+						initial_choice_count = 3
+						current_choice_count = initial_choice_count
+						max_choices_available = 2
+						
+		'2': #annie neutral, first iteration
+			match last_argument["type"]:
+				"normal":
+					show_choices(3)
+				"annie_chooses":
+					pass
+				"new_choices":
+					pass
 		
-		"new_choices":
-			if(last_argument["index"] == "2"):
-				show_choices(5)
-				initial_choice_count = 5
-				current_choice_count = initial_choice_count
-				max_choices_available = 2
+		'3': #annie mad, first iteration
+			match last_argument["type"]:
+				"normal":
+					show_choices(3)
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+						show_choices(3)
+						initial_choice_count = 3
+						current_choice_count = initial_choice_count
+						max_choices_available = 5
+					
+		'4': #annie happy, last iteration
+			match last_argument["type"]:
+				"normal":
+					pass
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+					pass
 			
+		'5': #annie neutral, last iteration
+			match last_argument["type"]:
+				"normal":
+					pass
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+					pass
+			
+		'6': #annie mad, last iteration
+			match last_argument["type"]:
+				"normal":
+					pass
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+					pass
 
 func show_choices(count:int)->void:
 	var i:int=0

@@ -3,7 +3,55 @@
 join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie (annie_angry) left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
-annie: irritable interaction, first iteration
+annie: That's it. This writing is so bad I can't believe you're the same author who created my beloved Misery.
+annie: After all I'm doing for you this is how you repay me?\
+This is how you would treat your biggest fan?
+[signal arg_type="dict" arg="{"index":"0","scene":"3","type":"new_choices"}"]
+- Sorry
+	paul: Sorry, I...\
+It was not my intention.
+- I'm having trouble focusing | [else="disable"]
+	paul: I'm having trouble focusing on the story.\
+It feels as though there is a fog in my brain.
+- This loneliness is overwhelming | [else="disable"]
+	paul: This loneliness is overwhelming.\
+Aren't the roads open alredy?
+- I will do better
+	paul: I will do better, Annie.\
+I promise i will fix this, for you... And for Misery
+- Trust me, I will fix this
+	paul: Oh dear, you are right.\
+Just place your trust in me, i will make this right. I will give Misery what she deserves.
+paul: It's been hard to find the right words with this pain.
+annie: Listen to me Paul, I want no excuses.\
+No hospital would treat you as good as I'm doing - not that the roads are open, anyways.
+annie: And you better revise this sorry excuse for a chapter you wrote today.\
+Give Misery the story she deserves. 
+annie: In fact, I have some ideas that could take this story to a whole other level.
+annie: For the ending, Geoffrey and Ian could compete for Misery's love through a sword duel.\
+How passionate! Don't you think that's a good idea?
+[signal arg_type="dict" arg="{"index":"1","scene":"3","type":"normal"}"]
+- I have my own ideas
+	paul: I have different things planned for Misery's character arc.\
+I can only ask you to wait and see.
+	annie: ...
+	annie: We'll see what you come up with, then.\
+*scoffs*
+	set {ENDING_MAD} += 1
+- The final decision is mine
+	paul: That sounds good, Annie. You've got potential as a writer.\
+I'm afraid, however, that the final decision is mine to make.
+	annie: Oh, thank you.\
+I'm dying to see what awaits for Misery.
+	set {ENDING_NEUTRAL} += 1
+- That's such a good idea! | [if {TRUE} == false] [else="disable"]
+	paul: That's such a good idea!\
+I can alredy picture it, a fair duel for the damisel's hand... How come i didn't think of it earlier?\\
+...You'll have to wait to know who wins in the end, though.
+	annie: See? I knew you would agree.\
+You're a genius writer, after all.
+	set {ENDING_HAPPY} += 1
+annie: Let's continue tomorrow, shall we? You've got to rest now.
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
 leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
