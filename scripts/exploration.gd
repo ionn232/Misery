@@ -7,6 +7,9 @@ extends Node2D
 @onready var time_left: Label = $ui/ui_timer/TimeLeft
 @onready var time_limit: Timer = $TimeLimit
 
+@onready var bgm_ambience: AudioStreamPlayer = $BgmAmbience
+@onready var sfx_car_arriving: AudioStreamPlayer = $SfxCarArriving
+@onready var sfx_car_leaving: AudioStreamPlayer = $SfxCarLeaving
 
 func _ready():
 	pass
@@ -16,6 +19,18 @@ func assign_camera(cameraPath:NodePath):
 
 func _process(delta: float) -> void:
 	time_left.text = seconds2hhmmss(time_limit.time_left)
+	if time_left.text == "04:59.00":
+		sfx_car_leaving.play()
+		
+	if time_left.text == "04:20.00":
+		bgm_ambience.play()
+		
+	if time_left.text == "02:00.00":
+		bgm_ambience.play()
+		
+	if time_left.text == "01:00.00":
+		sfx_car_arriving.play()
+	
 
 
 func seconds2hhmmss(total_seconds: float) -> String:

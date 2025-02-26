@@ -15,6 +15,8 @@ const AI_EXAMPLE:String = "In the dim glow of the candlelit chamber, Misery Chas
 @onready var choice_2: PanelContainer = $Choice2
 @onready var choice_3: PanelContainer = $Choice3
 
+@onready var sfx_t: AudioStreamPlayer = $SfxTypewritter
+
 var options_positive:Array[String] = ['opt1-1', 'opt2-1', 'opt3-1']
 var options_neutral:Array[String] = ['opt1-2', 'opt2-2', 'opt3-2']
 var options_negative:Array[String] = ['opt1-3', 'opt2-3', 'opt3-3']
@@ -25,6 +27,7 @@ var selection3:String
 var current_stage:int = 1
 
 func _ready():
+	sfx_t.play()
 	button_1.grab_focus()
 	button_1.button_up.connect(_button_pressed.bind(button_1))
 	button_2.button_up.connect(_button_pressed.bind(button_2))

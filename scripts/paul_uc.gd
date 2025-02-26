@@ -6,6 +6,14 @@ extends CharacterBody2D
 @onready var sprite_handler_left: AnimatedSprite2D = $SpriteHandlerLeft
 @onready var object_detector: Area2D = $ObjectDetector
 @onready var time_limit: Timer = $"../TimeLimit"
+@onready var sfx_movement: AudioStreamPlayer = $SfxMovement
+@onready var sfx_movement2: AudioStreamPlayer = $SfxMovement2
+@onready var sfx_movement3: AudioStreamPlayer = $SfxMovement3
+@onready var sfx_movement4: AudioStreamPlayer = $SfxMovement4
+@onready var sfx_movement5: AudioStreamPlayer = $SfxMovement5
+@onready var sfx_movement6: AudioStreamPlayer = $SfxMovement6
+@onready var sfx_movement7: AudioStreamPlayer = $SfxMovement7
+@onready var sfx_movement8: AudioStreamPlayer = $SfxMovement8
 
 #values per wheel (effectively doubled for player control)
 const IMPULSE = 300.0
@@ -59,9 +67,7 @@ func _physics_process(delta: float) -> void:
 	var input_right_forward = Input.is_action_just_pressed("Right-wheel-up")
 	var input_right_back = Input.is_action_just_pressed("Right-wheel-down")
 	var input_left_forward = Input.is_action_just_pressed("Left-wheel-up")
-	var input_left_back = Input.is_action_just_pressed("Left-wheel-down")
-	
-	#radius init per tick
+	var input_left_back = Input.is_action_just_pressed("Left-wheel-down")	#radius init per tick
 	rotation_radius_left = MAX_ROTATION_RADIUS
 	rotation_radius_right = MAX_ROTATION_RADIUS
 	
@@ -173,12 +179,49 @@ func wheelchair_push() -> void:
 		sprite_handler_left.play("push") if queue_left_forward else sprite_handler_left.play("push_back")
 		queue_left_back = false
 		queue_left_forward = false
+		var randf = randf()
+		if randf() < 0.5:
+			if randf < 0.1:
+				sfx_movement.play()
+			if randf < 0.2 && randf > 0.1:
+				sfx_movement2.play()
+			if randf < 0.3 && randf > 0.2:
+				sfx_movement3.play()
+			if randf < 0.4 && randf > 0.3:
+				sfx_movement4.play()
+			if randf < 0.5 && randf > 0.4:
+				sfx_movement5.play()
+			if randf < 0.6 && randf > 0.5:
+				sfx_movement6.play()
+			if randf < 0.7 && randf > 0.6:
+				sfx_movement7.play()
+			if randf < 0.8 && randf > 0.7:
+				sfx_movement8.play()
+		
 	if(queue_right_forward || queue_right_back):
 		raw_speed_right += IMPULSE * ((int(queue_right_forward)*2)-1)
 		rotation_radius_left = MAX_ROTATION_RADIUS
 		sprite_handler_right.play("push") if queue_right_forward else sprite_handler_right.play("push_back")
 		queue_right_back = false
 		queue_right_forward = false
+		var randf = randf()
+		if randf() < 0.5:
+			if randf < 0.1:
+				sfx_movement.play()
+			if randf < 0.2 && randf > 0.1:
+				sfx_movement2.play()
+			if randf < 0.3 && randf > 0.2:
+				sfx_movement3.play()
+			if randf < 0.4 && randf > 0.3:
+				sfx_movement4.play()
+			if randf < 0.5 && randf > 0.4:
+				sfx_movement5.play()
+			if randf < 0.6 && randf > 0.5:
+				sfx_movement6.play()
+			if randf < 0.7 && randf > 0.6:
+				sfx_movement7.play()
+			if randf < 0.8 && randf > 0.7:
+				sfx_movement8.play()
 	last_push = 0.0
 
 func resume_game():

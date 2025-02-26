@@ -1,14 +1,25 @@
-[gd_scene load_steps=55 format=3 uid="uid://d04tvwyids61o"]
+[gd_scene load_steps=66 format=3 uid="uid://d04tvwyids61o"]
 
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
 [ext_resource type="Texture2D" uid="uid://d36e4ded8mncu" path="res://resources/Exploration/map_v1.png" id="2_stnxy"]
 [ext_resource type="SpriteFrames" uid="uid://cwxk3p32k8o25" path="res://VN/textbox_frames.tres" id="5_6xoc6"]
+[ext_resource type="AudioStream" uid="uid://dqjuvh3dr86c1" path="res://resources/Exploration/wheelchair1.mp3" id="5_g7uuq"]
+[ext_resource type="AudioStream" uid="uid://ckb30dtbgc3tk" path="res://resources/Exploration/wheelchair2.mp3" id="5_jatr2"]
 [ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://resources/Exploration/paul_anim_frames.tres" id="5_msodk"]
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="6_knjoa"]
+[ext_resource type="AudioStream" uid="uid://1h2smgrxugxh" path="res://resources/Exploration/wheelchair3.mp3" id="7_mwbra"]
 [ext_resource type="Script" path="res://scenes/test_object.gd" id="7_nrqwd"]
 [ext_resource type="Texture2D" uid="uid://j7lwdxym4bq3" path="res://VN/s1.png" id="8_0it2s"]
+[ext_resource type="AudioStream" uid="uid://b5flrapq1cfi8" path="res://resources/Exploration/wheelchair4.mp3" id="8_fou5a"]
 [ext_resource type="Texture2D" uid="uid://bnovgw2tc2jnd" path="res://VN/s2.png" id="9_5o7wd"]
+[ext_resource type="AudioStream" uid="uid://cvrjov0y8y51" path="res://resources/Exploration/wheelchair5.mp3" id="9_fu0wp"]
+[ext_resource type="AudioStream" uid="uid://crj2efuadyi8b" path="res://resources/Exploration/wheelchair6.mp3" id="10_5d2c2"]
+[ext_resource type="AudioStream" uid="uid://0ol3hxaudym1" path="res://resources/Exploration/wheelchair7.mp3" id="11_utqd7"]
+[ext_resource type="AudioStream" uid="uid://lhqrd21h6ck6" path="res://resources/Exploration/ambience.mp3" id="11_wdnmi"]
+[ext_resource type="AudioStream" uid="uid://c1wm07ixxqpys" path="res://resources/Exploration/cararriving.mp3" id="12_mxwf7"]
+[ext_resource type="AudioStream" uid="uid://jtob2t5pldvr" path="res://resources/Exploration/wheelchair8.mp3" id="12_soefu"]
+[ext_resource type="AudioStream" uid="uid://boix1b4qfbsum" path="res://resources/Exploration/carleaving.mp3" id="13_0cpoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1h4g"]
 size = Vector2(39.75, 16.5)
@@ -265,7 +276,6 @@ shape = SubResource("RectangleShape2D_6ea1c")
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="map/collisions"]
 position = Vector2(-220.625, 19.375)
 rotation = -0.811578
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1vrxl")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="map/collisions"]
@@ -405,6 +415,38 @@ sprite_frames = ExtResource("5_msodk")
 animation = &"push"
 flip_h = true
 
+[node name="SfxMovement" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("5_g7uuq")
+volume_db = -30.0
+
+[node name="SfxMovement2" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("5_jatr2")
+volume_db = -30.0
+
+[node name="SfxMovement3" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("7_mwbra")
+volume_db = -30.0
+
+[node name="SfxMovement4" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("8_fou5a")
+volume_db = -30.0
+
+[node name="SfxMovement5" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("9_fu0wp")
+volume_db = -30.0
+
+[node name="SfxMovement6" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("10_5d2c2")
+volume_db = -30.0
+
+[node name="SfxMovement7" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("11_utqd7")
+volume_db = -30.0
+
+[node name="SfxMovement8" type="AudioStreamPlayer" parent="Paul_UC"]
+stream = ExtResource("12_soefu")
+volume_db = -30.0
+
 [node name="TimeLimit" type="Timer" parent="."]
 wait_time = 300.0
 one_shot = true
@@ -454,5 +496,17 @@ sprite_frames = SubResource("SpriteFrames_bgo0d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object/ObjectArea"]
 shape = SubResource("CircleShape2D_d0jlt")
+
+[node name="BgmAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wdnmi")
+volume_db = -32.906
+
+[node name="SfxCarArriving" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_mxwf7")
+volume_db = -30.365
+
+[node name="SfxCarLeaving" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_0cpoo")
+volume_db = -43.136
 
 [connection signal="timeout" from="Paul_UC/PushTimer" to="Paul_UC" method="wheelchair_push"]
