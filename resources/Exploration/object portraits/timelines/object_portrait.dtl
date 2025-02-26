@@ -1,0 +1,7 @@
+[style name="vn_stock"]
+join paper_bg center [animation="Fade In" wait="true"]
+join portrait center [animation="Fade In" wait="true"]
+paul: Two men with fancy clothes standing beside each other. Both look exactly identical except from some object they carry in hand. One has a hand clock and the other an umbrella. The one with the umbrella has his face ripped out of the portrait.
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+leave portrait [animation="Fade Out" wait="true"]
+leave paper_bg [animation="Fade Out" wait="true"]

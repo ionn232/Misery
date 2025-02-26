@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bs563rw6eec4m"]
 
+[ext_resource type="Script" path="res://scripts/writing.gd" id="1_e6hhv"]
 [ext_resource type="Texture2D" uid="uid://c0l8d7kjr24xg" path="res://resources/Writing/Option A.png" id="1_n0swy"]
-[ext_resource type="Script" path="res://scenes/control.gd" id="2_qhvjh"]
 [ext_resource type="Texture2D" uid="uid://0rojsmmumqss" path="res://resources/Writing/Option_B.png" id="2_yloms"]
 [ext_resource type="StyleBox" uid="uid://cb17shdbvck2a" path="res://VN/focused_option_stylebox.tres" id="4_k3wih"]
 [ext_resource type="SpriteFrames" uid="uid://dqbgpgadhxpym" path="res://VN/paper_bg_character.tres" id="4_q7o5l"]
@@ -9,7 +9,8 @@
 [ext_resource type="StyleBox" uid="uid://dn2781hdpw12" path="res://VN/empty_stylebox.tres" id="6_jef1r"]
 [ext_resource type="AudioStream" uid="uid://cbd40raeb7ape" path="res://resources/Writing/typewritter.mp3" id="8_ocmv2"]
 
-[node name="WritingTest" type="Node2D"]
+[node name="Writing" type="Node2D"]
+script = ExtResource("1_e6hhv")
 
 [node name="bg0" type="Sprite2D" parent="."]
 position = Vector2(961, 541)
@@ -28,7 +29,6 @@ anchors_preset = 0
 offset_left = 4.0
 offset_right = 1924.0
 offset_bottom = 1081.0
-script = ExtResource("2_qhvjh")
 
 [node name="Button1" type="PanelContainer" parent="Control"]
 self_modulate = Color(1, 1, 1, 0)
@@ -193,12 +193,14 @@ theme_override_styles/focus = ExtResource("4_k3wih")
 theme_override_styles/disabled = ExtResource("5_abdmx")
 theme_override_styles/normal = ExtResource("6_jef1r")
 
-[node name="HideTime" type="Timer" parent="Control"]
+[node name="HideTime" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
 [node name="SfxTypewritter" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("8_ocmv2")
 volume_db = -20.497
+
+
 
 [connection signal="timeout" from="Control/HideTime" to="Control" method="_on_hide_time_timeout"]

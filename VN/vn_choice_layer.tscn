@@ -62,7 +62,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton2/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -92,7 +92,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton11/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -129,7 +129,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton12/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -159,7 +159,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton13/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -189,7 +189,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton14/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -219,7 +219,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton15/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -249,7 +249,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton16/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -279,7 +279,7 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton17/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
 
@@ -309,16 +309,6 @@ grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Choices/DialogicNode_ChoiceButton18/PanelContainer"]
 position = Vector2(25, 20)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.05, 0.02)
 sprite_frames = ExtResource("3_o6ss3")
 animation = &"unfold"
-
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton2" to="Choices/DialogicNode_ChoiceButton2" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton11" to="Choices/DialogicNode_ChoiceButton11" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton12" to="Choices/DialogicNode_ChoiceButton12" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton13" to="Choices/DialogicNode_ChoiceButton13" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton14" to="Choices/DialogicNode_ChoiceButton14" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton15" to="Choices/DialogicNode_ChoiceButton15" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton16" to="Choices/DialogicNode_ChoiceButton16" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton17" to="Choices/DialogicNode_ChoiceButton17" method="_on_visibility_changed"]
-[connection signal="visibility_changed" from="Choices/DialogicNode_ChoiceButton18" to="Choices/DialogicNode_ChoiceButton18" method="_on_visibility_changed"]

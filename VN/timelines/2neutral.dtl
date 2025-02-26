@@ -1,0 +1,10 @@
+[style name="vn_stock"]
+[background arg="res://resources/Interaction/backgrounds/bg_kitchen.png" fade="1.0"]
+join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
+join annie left [animation="Fade In" length="1.0" wait="true"]
+annie: ⠀
+annie: neutral interaction, last iteration
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+leave annie [animation="Fade Out" wait="true"]
+leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
+[clear time="1.0" step="false" text="false" portraits="false" music="false" positions="false" style="false"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8cb81njchvb3"]
+[gd_scene load_steps=3 format=3 uid="uid://b8cb81njchvb3"]
 
+[ext_resource type="Script" path="res://scripts/interaction_phase.gd" id="1_0f212"]
 [ext_resource type="Script" path="res://scripts/vn.gd" id="1_y8kbt"]
 
-[node name="InteractionTest" type="Node2D"]
+[node name="Interaction" type="Node2D"]
+script = ExtResource("1_0f212")
 
 [node name="VN" type="Node2D" parent="."]
 script = ExtResource("1_y8kbt")

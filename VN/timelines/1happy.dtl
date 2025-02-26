@@ -1,0 +1,43 @@
+[style name="vn_stock"]
+[background arg="res://resources/Interaction/backgrounds/Screenshot 2025-02-14 at 16.57.44.png" fade="1.0"]
+join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
+join annie (annie_happy) left [animation="Fade In" length="1.0" wait="true"]
+annie: ⠀
+annie: This quiet and solitary ambience has a special sort of feeling...\
+Paul, might it have been the spark that ignited your creativity to produce such fantastic writing today?
+[signal arg_type="dict" arg="{"index":"0","scene":"1","type":"new_choices"}"]
+- You were
+	paul: My inspiration was you, Annie.
+- You're right
+	paul: You're right. It's the perfect ambience for writing, away from any distraction.
+- No, I feel stuck here
+annie: Oh Paul, you're too sweet.
+annie: I have some ideas that could take this story to a whole other level.
+annie: For the ending, Geoffrey and Ian could compete for Misery's love through a sword duel. \
+How passionate! Don't you think that's a good idea?
+[signal arg_type="dict" arg="{"index":"1","scene":"1","type":"normal"}"]
+- I have my own ideas | [if {TRUE} == false] [else="disable"]
+	paul: I have different things planned for Misery's character arc.\
+I can only ask you to wait and see.
+	annie: ...
+	annie: We'll see what you come up with, then.\
+*scoffs*
+	set {ENDING_MAD} += 1
+- The final decision is mine
+	paul: That sounds good, Annie. You've got potential as a writer.\
+I'm afraid, however, that the final decision is mine to make.
+	annie: Oh, thank you.\
+I'm dying to see what awaits for Misery.
+	set {ENDING_NEUTRAL} += 1
+- That's such a good idea!
+	paul: That's such a good idea!\
+I can alredy picture it, a fair duel for the damisel's hand... How come i didn't think of it earlier?\
+...You'll have to wait to know who wins in the end, though.
+	annie: See? I knew you would agree.\
+You're a genius writer, after all.
+	set {ENDING_HAPPY} += 1
+annie: Let's continue tomorrow, shall we? You've got to rest now.
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+leave annie [animation="Fade Out" wait="true"]
+leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
+[clear time="1.0" step="false" text="false" portraits="false" music="false" positions="false" style="false"]

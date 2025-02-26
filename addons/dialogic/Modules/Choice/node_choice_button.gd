@@ -27,18 +27,32 @@ extends Button
 ## If set, the text will be set on this node's `text` property instead.
 @export var text_node: Node
 
+var timer:float = 0.0
+var folding:bool = false
+const TIME_TO_DISAPPEAR = 0.5
 
 func _ready() -> void:
 	add_to_group('dialogic_choice_button')
 	shortcut_in_tooltip = false
-	hide()
+	visible = false
+	visibility_changed.connect(_on_visibility_changed)
 
+func _process(delta: float) -> void:
+	if(folding):
+		timer += delta
+		if (timer >= TIME_TO_DISAPPEAR):
+			visible = false
+			folding = false
+			timer = 0.0
 
 func _load_info(choice_info: Dictionary) -> void:
 	set_choice_text(choice_info.text)
 	visible = choice_info.visible
 	disabled = choice_info.disabled
 
+func fold_button():
+	folding = true
+	sprite.play('fold')
 
 ## Called when the text changes.
 func set_choice_text(new_text: String) -> void:
@@ -48,6 +62,8 @@ func set_choice_text(new_text: String) -> void:
 		text = new_text
 
 func _on_visibility_changed() -> void:
-	if (sprite):
+	if (sprite && visible):
 		sprite.play('unfold')
-	pass # Replace with function body.
+	##elif (sprite && !sprite.visible):
+		##sprite.visible = true
+		##sprite.play('fold')

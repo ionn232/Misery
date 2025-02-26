@@ -1,0 +1,77 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "curtains_fish",
+"description": "",
+"display_name": "objects_char",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"curtains_fish": {
+"export_overrides": {
+"image": "\"res://resources/Exploration/object portraits/curtains_fish.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(0, -200),
+"scale": 1.0,
+"scene": ""
+},
+"magnets": {
+"export_overrides": {
+"image": "\"res://resources/Exploration/object portraits/magnets.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"painting": {
+"export_overrides": {
+"image": "\"res://resources/Exploration/object portraits/painting.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"pillow": {
+"export_overrides": {
+"image": "\"res://resources/Exploration/object portraits/pillow.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"porcelain": {
+"export_overrides": {
+"image": "\"res://resources/Exploration/object portraits/porcelain.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"snowglobe": {
+"export_overrides": {
+"image": "\"res://resources/Exploration/object portraits/snowglobe.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+}
+},
+"scale": 1.0
+}

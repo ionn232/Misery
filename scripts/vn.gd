@@ -22,13 +22,20 @@ var choice_addition_time:float = NEW_CHOICE_CD
 
 var last_argument
 
+var timeline_name:String
+
+signal timeline_over
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Dialogic.start('test0')
+func vn_ready() -> void:
+	Dialogic.start(timeline_name)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.Choices.choice_selected.connect(_choice_made)
 	get_viewport().gui_focus_changed.connect(_update_selection)
-	#Viewport.gui_focus_changed.connect(_update_selection)
+	Dialogic.timeline_ended.connect(end_phase)
+
+func end_phase():
+	timeline_over.emit()
 
 func _choice_made(info:Dictionary):
 	annie_objective_choice = -1
@@ -61,38 +68,113 @@ func _process(delta: float) -> void:
 			annie_action_time = ANNIE_ACTION_CD
 		annie_action_time -= delta
 	
-	#New choices are being added
+	#New choices are being added 
 	elif (max_choices_available >= 0 && current_choice_count < max_choices_available):
 		if (choice_addition_time <= 0.0):
 			choices[current_choice_count].visible = true
 			current_choice_count += 1
 			choice_addition_time = NEW_CHOICE_CD
 		choice_addition_time -= delta
+	
+	#choices are being removed
+	elif (max_choices_available >= 0 && current_choice_count > max_choices_available):
+		if (choice_addition_time <= 0.0):
+			if (choices[current_choice_count-1].has_focus()):
+				choices[current_choice_count-2].grab_focus()
+			choices[current_choice_count-1].fold_button()
+			current_choice_count -= 1
+			choice_addition_time = NEW_CHOICE_CD
+		choice_addition_time -= delta
 
 func _execute_after_delay() -> void:
 	var choices = get_tree().get_nodes_in_group('dialogic_choice_button')
-	match last_argument["type"]:
-		"normal":
-			if(last_argument["index"] == "0"):
-				show_choices(3)
-			
-		"annie_chooses":
-			if(last_argument["index"] == "1"):
-				show_choices(3)
-				annie_objective_choice = 2
+	match last_argument["scene"]:
+		'0': #test scene
+			match last_argument["type"]:
+				"normal":
+					if(last_argument["index"] == '0'):
+						show_choices(3)
+					
+				"annie_chooses":
+					if(last_argument["index"] == '1'):
+						show_choices(3)
+						annie_objective_choice = 2
+				
+				"new_choices":
+					if(last_argument["index"] == '2'):
+						show_choices(5)
+						initial_choice_count = 5
+						current_choice_count = initial_choice_count
+						max_choices_available = 2
+						
+		'1': #annie happy, first iteration
+			match last_argument["type"]:
+				"normal":
+					show_choices(3)
+				"annie_chooses":
+					pass
+				"new_choices":
+					if(last_argument["index"] == '0'):
+						show_choices(3)
+						initial_choice_count = 3
+						current_choice_count = initial_choice_count
+						max_choices_available = 2
+						
+		'2': #annie neutral, first iteration
+			match last_argument["type"]:
+				"normal":
+					show_choices(3)
+				"annie_chooses":
+					pass
+				"new_choices":
+					pass
 		
-		"new_choices":
-			if(last_argument["index"] == "2"):
-				show_choices(2)
-				initial_choice_count = 2
-				current_choice_count = initial_choice_count
-				max_choices_available = 5
+		'3': #annie mad, first iteration
+			match last_argument["type"]:
+				"normal":
+					show_choices(3)
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+						show_choices(3)
+						initial_choice_count = 3
+						current_choice_count = initial_choice_count
+						max_choices_available = 5
+					
+		'4': #annie happy, last iteration
+			match last_argument["type"]:
+				"normal":
+					pass
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+					pass
 			
-			#var i:int=0
-			#for choice:DialogicNode_ChoiceButton in choices:
-				#choice.visible = (i<initial_choice_count)
-				#i += 1
-		
+		'5': #annie neutral, last iteration
+			match last_argument["type"]:
+				"normal":
+					pass
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+					pass
+			
+		'6': #annie mad, last iteration
+			match last_argument["type"]:
+				"normal":
+					pass
+					
+				"annie_chooses":
+					pass
+				
+				"new_choices":
+					pass
 
 func show_choices(count:int)->void:
 	var i:int=0
