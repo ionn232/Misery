@@ -33,16 +33,16 @@ func assign_camera(cameraPath:NodePath):
 
 func _process(delta: float) -> void:
 	time_left.text = seconds2hhmmss(time_limit.time_left)
-	if time_left.text == "04:59.00":
+	if time_left.text.begins_with("04:59."):
 		sfx_car_leaving.play()
 		
-	if time_left.text == "04:20.00":
+	elif time_left.text.begins_with("04:20."):
 		bgm_ambience.play()
 		
-	if time_left.text == "02:00.00":
+	elif time_left.text.begins_with("02:00."):
 		bgm_ambience.play()
 		
-	if time_left.text == "01:00.00":
+	elif time_left.text.begins_with("01:00."):
 		sfx_car_arriving.play()
 	
 	for object:Node2D in objects.get_children():

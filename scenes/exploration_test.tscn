@@ -1,31 +1,31 @@
-[gd_scene load_steps=66 format=3 uid="uid://d04tvwyids61o"]
+[gd_scene load_steps=76 format=3 uid="uid://d04tvwyids61o"]
 
 [ext_resource type="Script" path="res://scripts/exploration.gd" id="1_0fxv7"]
 [ext_resource type="Script" path="res://scripts/paul_uc.gd" id="1_tv0qa"]
 [ext_resource type="Texture2D" uid="uid://bn5fmpnyx4cpu" path="res://resources/Exploration/map_last.png" id="2_qdhrr"]
 [ext_resource type="SpriteFrames" uid="uid://cwxk3p32k8o25" path="res://VN/textbox_frames.tres" id="5_6xoc6"]
-[ext_resource type="AudioStream" uid="uid://dqjuvh3dr86c1" path="res://resources/Exploration/wheelchair1.mp3" id="5_g7uuq"]
-[ext_resource type="AudioStream" uid="uid://ckb30dtbgc3tk" path="res://resources/Exploration/wheelchair2.mp3" id="5_jatr2"]
+[ext_resource type="AudioStream" uid="uid://bs3w07sm7incb" path="res://resources/Exploration/wheelchair1.mp3" id="5_g7uuq"]
+[ext_resource type="AudioStream" uid="uid://jxgrnqjhrky" path="res://resources/Exploration/wheelchair2.mp3" id="5_jatr2"]
 [ext_resource type="SpriteFrames" uid="uid://b83qg8hvnqv0p" path="res://resources/Exploration/paul_anim_frames.tres" id="5_msodk"]
 [ext_resource type="Script" path="res://scripts/text_box.gd" id="6_knjoa"]
-[ext_resource type="AudioStream" uid="uid://1h2smgrxugxh" path="res://resources/Exploration/wheelchair3.mp3" id="7_mwbra"]
+[ext_resource type="AudioStream" uid="uid://l8q6w76am2bk" path="res://resources/Exploration/wheelchair3.mp3" id="7_mwbra"]
 [ext_resource type="Script" path="res://scripts/objects/test_object.gd" id="7_nrqwd"]
 [ext_resource type="Texture2D" uid="uid://j7lwdxym4bq3" path="res://VN/s1.png" id="8_0it2s"]
-[ext_resource type="AudioStream" uid="uid://b5flrapq1cfi8" path="res://resources/Exploration/wheelchair4.mp3" id="8_fou5a"]
+[ext_resource type="AudioStream" uid="uid://b1aax02d6ounf" path="res://resources/Exploration/wheelchair4.mp3" id="8_fou5a"]
 [ext_resource type="Texture2D" uid="uid://bnovgw2tc2jnd" path="res://VN/s2.png" id="9_5o7wd"]
+[ext_resource type="AudioStream" uid="uid://civiktfcf5o0r" path="res://resources/Exploration/wheelchair5.mp3" id="9_fu0wp"]
+[ext_resource type="AudioStream" uid="uid://bkgkcwxsscpif" path="res://resources/Exploration/wheelchair6.mp3" id="10_5d2c2"]
 [ext_resource type="Script" path="res://scripts/objects/painting.gd" id="10_tgoe7"]
+[ext_resource type="AudioStream" uid="uid://bbrhal6op2hh5" path="res://resources/Exploration/wheelchair7.mp3" id="11_utqd7"]
+[ext_resource type="AudioStream" uid="uid://cdla7romsbjek" path="res://resources/Exploration/ambience.mp3" id="11_wdnmi"]
 [ext_resource type="Script" path="res://scripts/objects/porcelain_figures.gd" id="11_xnkex"]
 [ext_resource type="Script" path="res://scripts/objects/snowball.gd" id="12_bgrk2"]
+[ext_resource type="AudioStream" uid="uid://dtxs6j3ylvoa8" path="res://resources/Exploration/cararriving.mp3" id="12_mxwf7"]
+[ext_resource type="AudioStream" uid="uid://bvvhhama0blul" path="res://resources/Exploration/wheelchair8.mp3" id="12_soefu"]
+[ext_resource type="AudioStream" uid="uid://dqpiou5xt48pw" path="res://resources/Exploration/carleaving.mp3" id="13_0cpoo"]
 [ext_resource type="Script" path="res://scripts/objects/magnets.gd" id="13_lyptv"]
 [ext_resource type="Script" path="res://scripts/objects/pillow.gd" id="14_puvco"]
 [ext_resource type="Script" path="res://scripts/objects/curtain.gd" id="15_4i4gl"]
-[ext_resource type="AudioStream" uid="uid://cvrjov0y8y51" path="res://resources/Exploration/wheelchair5.mp3" id="9_fu0wp"]
-[ext_resource type="AudioStream" uid="uid://crj2efuadyi8b" path="res://resources/Exploration/wheelchair6.mp3" id="10_5d2c2"]
-[ext_resource type="AudioStream" uid="uid://0ol3hxaudym1" path="res://resources/Exploration/wheelchair7.mp3" id="11_utqd7"]
-[ext_resource type="AudioStream" uid="uid://lhqrd21h6ck6" path="res://resources/Exploration/ambience.mp3" id="11_wdnmi"]
-[ext_resource type="AudioStream" uid="uid://c1wm07ixxqpys" path="res://resources/Exploration/cararriving.mp3" id="12_mxwf7"]
-[ext_resource type="AudioStream" uid="uid://jtob2t5pldvr" path="res://resources/Exploration/wheelchair8.mp3" id="12_soefu"]
-[ext_resource type="AudioStream" uid="uid://boix1b4qfbsum" path="res://resources/Exploration/carleaving.mp3" id="13_0cpoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1h4g"]
 size = Vector2(39.75, 16.5)
@@ -491,6 +491,7 @@ stream = ExtResource("12_soefu")
 volume_db = -30.0
 
 [node name="TimeLimit" type="Timer" parent="."]
+wait_time = 300.0
 one_shot = true
 autostart = true
 

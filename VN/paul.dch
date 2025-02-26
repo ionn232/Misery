@@ -4,8 +4,19 @@
 "_translation_id": "",
 "color": Color(0, 0, 0, 1),
 "custom_info": {
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Talk",
+"sound_moods": {
+"Talk": {
+"mode": 1,
+"name": "Talk",
+"pitch_base": 0.9,
+"pitch_variance": 0.2,
+"skip_characters": 7.0,
+"sound_path": "res://resources/Interaction/talk_sound.mp3",
+"volume_base": -15.0,
+"volume_variance": 0.0
+}
+},
 "style": "vn_ui_style"
 },
 "default_portrait": "empty",
