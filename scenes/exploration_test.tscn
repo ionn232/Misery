@@ -491,7 +491,7 @@ stream = ExtResource("12_soefu")
 volume_db = -30.0
 
 [node name="TimeLimit" type="Timer" parent="."]
-wait_time = 300.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 

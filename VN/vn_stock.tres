@@ -39,8 +39,10 @@ overrides = {
 "box_color_use_global": "false",
 "box_size": "Vector2(525, 350)",
 "next_indicator_enabled": "false",
+"normal_font": "\"res://resources/font.ttf\"",
 "text_custom_color": "Color(0, 0, 0, 1)",
-"text_use_global_color": "false"
+"text_use_global_color": "false",
+"text_use_global_font": "false"
 }
 
 [sub_resource type="Resource" id="Resource_43o74"]

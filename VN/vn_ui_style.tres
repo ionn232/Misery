@@ -43,7 +43,9 @@ overrides = {
 "boxes_stylebox_focused": "\"res://VN/focused_option_stylebox.tres\"",
 "boxes_stylebox_hovered": "\"choice_panel_hover.tres\"",
 "boxes_stylebox_normal": "\"choice_panel_normal.tres\"",
-"boxes_stylebox_pressed": "\"res://VN/empty_stylebox.tres\""
+"boxes_stylebox_pressed": "\"res://VN/empty_stylebox.tres\"",
+"font_custom": "\"res://resources/font.ttf\"",
+"font_use_global": "false"
 }
 
 [sub_resource type="Resource" id="Resource_af52n"]
@@ -64,8 +66,12 @@ overrides = {
 "name_label_alignment": "2",
 "name_label_box_modulate": "Color(1, 1, 1, 0)",
 "name_label_box_use_global_color": "false",
+"name_label_font": "\"res://resources/font.ttf\"",
+"name_label_use_global_font": "false",
+"normal_font": "\"res://resources/font.ttf\"",
 "text_custom_color": "Color(0, 0, 0, 1)",
-"text_use_global_color": "false"
+"text_use_global_color": "false",
+"text_use_global_font": "false"
 }
 
 [resource]
@@ -84,4 +90,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_y10kd")]([])
-metadata/_latest_layer = "15"
+metadata/_latest_layer = "18"

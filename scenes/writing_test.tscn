@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs563rw6eec4m"]
+[gd_scene load_steps=9 format=3 uid="uid://bs563rw6eec4m"]
 
 [ext_resource type="Script" path="res://scripts/writing.gd" id="1_e6hhv"]
 [ext_resource type="Texture2D" uid="uid://c0l8d7kjr24xg" path="res://resources/Writing/Option A.png" id="1_n0swy"]
 [ext_resource type="Texture2D" uid="uid://0rojsmmumqss" path="res://resources/Writing/Option_B.png" id="2_yloms"]
+[ext_resource type="FontFile" uid="uid://du5dvhlrb33tb" path="res://resources/font.ttf" id="4_83tjm"]
 [ext_resource type="StyleBox" uid="uid://cb17shdbvck2a" path="res://VN/focused_option_stylebox.tres" id="4_k3wih"]
 [ext_resource type="SpriteFrames" uid="uid://dqbgpgadhxpym" path="res://VN/paper_bg_character.tres" id="4_q7o5l"]
 [ext_resource type="StyleBox" uid="uid://ova52krv04go" path="res://VN/disabled_stylebox.tres" id="5_abdmx"]
@@ -42,8 +43,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_83tjm")
 theme_override_styles/focus = ExtResource("4_k3wih")
 theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/pressed = ExtResource("6_jef1r")
 theme_override_styles/normal = ExtResource("6_jef1r")
 action_mode = 0
 text = "opt1"
@@ -61,8 +64,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_83tjm")
 theme_override_styles/focus = ExtResource("4_k3wih")
 theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/pressed = ExtResource("6_jef1r")
 theme_override_styles/normal = ExtResource("6_jef1r")
 action_mode = 0
 text = "opt2"
@@ -80,8 +85,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_83tjm")
 theme_override_styles/focus = ExtResource("4_k3wih")
 theme_override_styles/disabled = ExtResource("5_abdmx")
+theme_override_styles/pressed = ExtResource("6_jef1r")
 theme_override_styles/normal = ExtResource("6_jef1r")
 action_mode = 0
 text = "opt3"
@@ -104,6 +111,7 @@ grow_vertical = 0
 [node name="Label" type="Label" parent="Control/Choice3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_83tjm")
 text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -137,6 +145,7 @@ grow_vertical = 0
 [node name="Label" type="Label" parent="Control/Choice1"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_83tjm")
 text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -173,6 +182,7 @@ grow_vertical = 0
 [node name="Label" type="Label" parent="Control/Choice2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_83tjm")
 text = "Final Choice Test"
 horizontal_alignment = 1
 vertical_alignment = 1
