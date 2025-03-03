@@ -58,6 +58,7 @@ overrides = {
 "box_color_use_global": "false",
 "box_margin_bottom": "0.0",
 "box_size": "Vector2(550, 920)",
+"normal_font": "\"res://resources/font.ttf\"",
 "text_use_global_font": "false"
 }
 

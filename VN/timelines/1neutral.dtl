@@ -4,7 +4,9 @@ join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
 annie: Paul, behold this quiet ambience. Gets you in the mood for writing, does it not? How do you feel?
-[signal arg_type="dict" arg="{"index":"0","scene":"2","type":"normal"}"]
+[signal arg_type="dict" arg="{"index":"0","scene":"2","type":"annie_chooses"}"]
+- I want to go home
+- It's never been harder
 - I feel lonely
 	paul: Loneliness feels heavy on my shoulders.
 - It helps with focusing

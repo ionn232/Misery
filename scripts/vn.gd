@@ -125,7 +125,8 @@ func _execute_after_delay() -> void:
 				"normal":
 					show_choices(3)
 				"annie_chooses":
-					pass
+					show_choices(5)
+					annie_objective_choice = 4
 				"new_choices":
 					pass
 		
