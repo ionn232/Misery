@@ -2,9 +2,45 @@
 [background arg="res://resources/Interaction/backgrounds/bg_kitchen.png" fade="1.0"]
 join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie left [animation="Fade In" length="1.0" wait="true"]
-annie: ⠀
-annie: neutral interaction, last iteration
+paul: ⠀
+paul: (Annie is completly absorbed in her reading.\
+I can tell I've gained her trust.)
+paul: (For the first time her gaze is not placed on me.)
+paul: (The door...\
+She left it open.\
+She didn't even realize, a small mistake caused by her intrigue.\
+There may never be another chance quite like this one.)
+[signal arg_type="dict" arg="{"index":"0","scene":"5","type":"annie_chooses"}"]
+- Go
+- to
+- the
+- door
+- NOW!
+paul: (I reach for the doorknob, my fingers brushing the cold metal. A deep breath. \
+The snow outside… I can almost feel it. I'm so close.)
+annie: What do you think you're doing?
+annie: You nedd me, Paul.\
+You know that, don't you?
+annie: I gave you my everything.\
+I helped you achieve your full potential.\
+If you leave, what will happen to you?\
+What will happen to us?
+paul: (She still thinks she's in control, but I know better.\
+If I play my cards right, I can leave peacefully...\
+But seeing her this desperate, is that what i really want?)
+[signal arg_type="dict" arg="{"index":"0","scene":"5","type":"normal"}"]
+- You need me as much as i do you.
+	set {LOCAL_ENDING} = 1
+- I won't forget you, Annie.
+	set {LOCAL_ENDING} = 2
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
 leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
+[background arg="res://resources/Interaction/backgrounds/black.png" fade="1.0"]
+[style name="vn_exposition"]
+if {LOCAL_ENDING} == 1:
+	(Paul manipulates Annie, making her dependent on him. He becomes the abuser, mirroring her control. The cycle of toxicity continues.)
+elif {LOCAL_ENDING} == 2:
+	(Paul escapes without violence, but his mind remains trapped. He is free, but his life is forever scarred by Annie’s control.)
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 [clear time="1.0" step="false" text="false" portraits="false" music="false" positions="false" style="false"]

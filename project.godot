@@ -45,7 +45,7 @@ directories/dtl_directory={
 "test_object": "res://scenes/object dialogue/test/test_object.dtl",
 "timelines/object_portrait": "res://resources/Exploration/object portraits/timelines/object_portrait.dtl"
 }
-layout/style_list=["res://VN/vn_ui_style.tres", "res://VN/vn_stock.tres"]
+layout/style_list=["res://VN/vn_ui_style.tres", "res://VN/vn_stock.tres", "res://VN/vn_exposition.tres"]
 layout/default_style="res://VN/vn_ui_style.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -74,6 +74,7 @@ variables={
 "ENDING_HAPPY": 0,
 "ENDING_MAD": 0,
 "ENDING_NEUTRAL": 0,
+"LOCAL_ENDING": 0,
 "TRUE": true
 }
 

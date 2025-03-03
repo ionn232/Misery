@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 		get_tree().quit()
 	#restart scene
 	if (Input.is_action_just_pressed("DEBUG_reset")):
+		Dialogic.end_timeline()
 		get_tree().reload_current_scene()
 	#debug options
 	if (Input.is_action_just_pressed("DEBUG_1")):
@@ -65,6 +66,19 @@ func handle_option(index: int):
 		5:
 			camera.ignore_rotation = debug_options.is_item_checked(4)
 			debug_options.set_item_checked(4, !debug_options.is_item_checked(4))
+		#skip to endings
+		6:
+			var last_interaction = INTERACTION_TEST.instantiate()
+			add_child(last_interaction)
+			last_interaction.load_scene(5)
+		7:
+			var last_interaction = INTERACTION_TEST.instantiate()
+			add_child(last_interaction)
+			last_interaction.load_scene(4)
+		8:
+			var last_interaction = INTERACTION_TEST.instantiate()
+			add_child(last_interaction)
+			last_interaction.load_scene(6)
 
 func next_scene(phase):
 	match phase:
@@ -106,7 +120,7 @@ func next_scene(phase):
 			remove_scene_delayed(phase)
 			var last_interaction = INTERACTION_TEST.instantiate()
 			add_child(last_interaction)
-			last_interaction.load_scene(4 + + get_interaction_offset())
+			last_interaction.load_scene(4 + get_interaction_offset())
 			last_interaction.phase_concluded.connect(next_scene.bind(last_interaction))
 			
 		_ when ((phase.name == "Interaction") && (phase.phase_index == 2)):

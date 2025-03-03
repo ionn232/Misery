@@ -3,8 +3,31 @@
 join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie (annie_happy) left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
-annie: happy interaction, last iteration
+annie: Spectacular, Paul!\
+That change of plot is just... Fantastic!\
+Finally, Misery is in the position she deserves.
+annie: I have been thinking...
+annie: Paul, my love... This is perfect, isn't it?
+annie: Everything is just as it should be.\
+You, me, and Misery's legacy...
+annie: Forever.
+annie: You understand now, don't you?\
+You understand that you and I were meant to be.
+paul: (She looks so at peace, so certain. But am I really safe here? \
+Or am I just convincing myself that this is love?)
+[signal arg_type="dict" arg="{"index":"0","scene":"4","type":"normal"}"]
+- You're right, Annie. I love you.
+	set {LOCAL_ENDING} = 1
+- Maybe... This is what I need.
+	set {LOCAL_ENDING} = 2
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
 leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
+[background arg="res://resources/Interaction/backgrounds/black.png" fade="1.0"]
+[style name="vn_exposition"]
+if {LOCAL_ENDING} == 1:
+	(Paul fully submits, his identity erased. He no longer thinks for himself, living only to please Annie. She holds him like a prized possession, forever.)
+elif {LOCAL_ENDING} == 2:
+	(Paul rationalizes the abuse as devotion. His mind twists reality—he believes this is love, that Annie saved him, that this was always his destiny.)
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 [clear time="1.0" step="false" text="false" portraits="false" music="false" positions="false" style="false"]

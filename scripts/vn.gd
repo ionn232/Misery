@@ -47,7 +47,7 @@ func _choice_made(info:Dictionary):
 	choice_addition_time = NEW_CHOICE_CD
 
 func _update_selection(node:Control):
-	current_option_index = node.get_index()
+	current_option_index = node.get_index() - 1
 
 func _on_dialogic_signal(argument:Dictionary):
 	last_argument = argument
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 		choices[annie_objective_choice].grab_focus()
 	elif (annie_objective_choice != -1):
 		if (annie_action_time <= 0.0):
-			var new_choice = current_option_index + 1 * sign(annie_objective_choice - current_option_index)
+			var new_choice:int = (current_option_index) + 1 * sign(annie_objective_choice - current_option_index)
 			choices[new_choice].grab_focus()
 			if (new_choice == annie_objective_choice): choice_locked = true
 			annie_action_time = ANNIE_ACTION_CD
@@ -146,7 +146,7 @@ func _execute_after_delay() -> void:
 		'4': #annie happy, last iteration
 			match last_argument["type"]:
 				"normal":
-					pass
+					show_choices(2)
 					
 				"annie_chooses":
 					pass
@@ -157,10 +157,12 @@ func _execute_after_delay() -> void:
 		'5': #annie neutral, last iteration
 			match last_argument["type"]:
 				"normal":
-					pass
+					show_choices(2)
 					
 				"annie_chooses":
-					pass
+					if(last_argument["index"] == '0'):
+						show_choices(5)
+						annie_objective_choice = 4
 				
 				"new_choices":
 					pass
@@ -168,7 +170,7 @@ func _execute_after_delay() -> void:
 		'6': #annie mad, last iteration
 			match last_argument["type"]:
 				"normal":
-					pass
+					show_choices(2)
 					
 				"annie_chooses":
 					pass

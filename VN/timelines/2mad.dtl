@@ -3,8 +3,50 @@
 join paper_bg (scene) left [animation="Fade In" length="1.0" wait="true"]
 join annie (annie_angry) left [animation="Fade In" length="1.0" wait="true"]
 annie: ⠀
-annie: irritable interaction, last iteration
+annie: You LIED to me, Paul!\
+You didn't do justice to Misery - you RUIED her! This is just disgusting!
+annie: After everything I've done for you! \
+You would be dead by now if it weren't for me, you know? I made you whole!\
+And the only thing i ask of in return... You can't even do THAT!
+annie: THIS IS NOT MISERY.\
+NOT THE ONE I KNOW.\
+I WILL HAVE TO SHOW YOU THE WAY, PAUL. BY FORCE IF NEEDED.
+paul: (She's beyond reason - there's no talking my way out of this one.\
+If I want to sorvive, I need to act quickly.\
+There's no escape without a fight.)
+[signal arg_type="dict" arg="{"index":"0","scene":"6","type":"normal"}"]
+- (I have to end this.)
+	set {LOCAL_ENDING} = 1
+- (I WILL KILL HER)
+	set {LOCAL_ENDING} = 2
 [clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 leave annie [animation="Fade Out" wait="true"]
 leave paper_bg [animation="Fade Out" length="1.0" wait="true"]
+[background arg="res://resources/Interaction/backgrounds/black.png" fade="5.0" transition="Push Up"]
+[style name="vn_exposition"]
+if {LOCAL_ENDING} == 1:
+	I have to distract her. Give her something to chase. \
+I light the manuscript on fire. The flames catch instantly. Annie screams—a mixture of anguish and rage—as she tries to smother the growing fire. \
+In the chaos, a heavy statue falls from the table. \
+With my broken body, I decide to fight. \
+My body and air are nearly giving out… She is stronger than me. I can't hold on to conciousness for much longer. \
+With my last breath, I grab the statue—and bring it crashing down on her skull. \
+Silence.\
+She’s dead. I am free. F R E E. But in what way? My body is shattered. My mind is fractured.
+	(Paul fights back violently, barely escaping. The battle is brutal—he is injured, scarred, but alive. He stumbles into the snow, breathless, free. Yet the price is steep. His body is broken. His mind is fractured. He will never be whole again.)
+elif {LOCAL_ENDING} == 2:
+	I lunge at her with everything I have left. \
+But she’s stronger than me… I give out. My vision flickers.\
+…\
+…\
+I wake up.\
+\
+Annie greets me, gun in hand.\
+She says I missed my chance, and now there's only one thing that can be done to ensure we're together forever.\
+I have no strength to protest.\
+\
+BANG\
+BANG
+	(Paul lashes out, pushing Annie past the edge. Whether it’s murder-suicide or a final, desperate struggle, the result is the same—neither of them make it out alive. The twisted, toxic love that bound them devours them both.)
+[clear time="1.0" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
 [clear time="1.0" step="false" text="false" portraits="false" music="false" positions="false" style="false"]
