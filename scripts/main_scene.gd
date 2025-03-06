@@ -20,6 +20,8 @@ func _ready() -> void:
 	debug_options.id_pressed.connect(handle_option)
 	camera.rotation_smoothing_enabled = true
 	camera.position_smoothing_enabled = true
+	Dialogic.end_timeline()
+	handle_option(1) #start game
 
 func _process(delta: float) -> void:
 	#program exit
@@ -29,17 +31,21 @@ func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("DEBUG_reset")):
 		Dialogic.end_timeline()
 		get_tree().reload_current_scene()
+		Dialogic.VAR.ANNIE_MOOD = 0
+	elif (Input.is_action_just_pressed("DEBUG_cheats")):
+		debug_menu.visible = true
+		debug_menu.show_popup()
 	#debug options
-	if (Input.is_action_just_pressed("DEBUG_1")):
-		handle_option(1)
-	elif (Input.is_action_just_pressed("DEBUG_2")):
-		handle_option(2)
-	elif (Input.is_action_just_pressed("DEBUG_3")):
-		handle_option(3)
-	elif (Input.is_action_just_pressed("DEBUG_4")):
-		handle_option(4)
-	elif (Input.is_action_just_pressed("DEBUG_5")):
-		handle_option(5)
+	#if (Input.is_action_just_pressed("DEBUG_1")):
+		#handle_option(1)
+	#elif (Input.is_action_just_pressed("DEBUG_2")):
+		#handle_option(2)
+	#elif (Input.is_action_just_pressed("DEBUG_3")):
+		#handle_option(3)
+	#elif (Input.is_action_just_pressed("DEBUG_4")):
+		#handle_option(4)
+	#elif (Input.is_action_just_pressed("DEBUG_5")):
+		#handle_option(5)
 
 func handle_option(index: int):
 	match index:
@@ -79,6 +85,17 @@ func handle_option(index: int):
 			var last_interaction = INTERACTION_TEST.instantiate()
 			add_child(last_interaction)
 			last_interaction.load_scene(6)
+		9:
+			if($Exploration/TimeLimit):
+				$Exploration/TimeLimit.stop()
+				$Exploration/TimeLimit.wait_time = 1.0
+				$Exploration/TimeLimit.start()
+		10:
+			if($Exploration/Paul_UC):
+				print('test')
+				var uc:CharacterBody2D = $Exploration/Paul_UC
+				uc.set_collision_layer_value(1, false)
+				uc.set_collision_mask_value(1, false)
 
 func next_scene(phase):
 	match phase:
@@ -126,6 +143,7 @@ func next_scene(phase):
 		_ when ((phase.name == "Interaction") && (phase.phase_index == 2)):
 			phase.queue_free()
 			get_tree().reload_current_scene()
+			Dialogic.VAR.ANNIE_MOOD = 0
 
 
 func get_interaction_offset() -> int:

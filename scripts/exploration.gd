@@ -65,6 +65,8 @@ func load_scene(index:int):
 			objects.get_child(4).enable()
 			objects.get_child(5).enable()
 			objects.get_child(6).enable()
+			for collision in room_transition_collisions.get_children():
+				collision.disabled = true
 			map.texture = map_last
 	resume()
 	phase_index = index
